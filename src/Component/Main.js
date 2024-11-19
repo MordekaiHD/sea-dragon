@@ -21,16 +21,37 @@ function Main() {
     setIsCartVisible(!isCartVisible);  // Переключаем видимость корзины
   };
 
-  // Функция для добавления товара в корзину
+  // Функция для добавления товара в корзину или увеличения его количества
   const handleAddToCart = (product) => {
-    console.log(product);
-    setCartItems((prevItems) => [...prevItems, product]);
+    // Проверяем, есть ли уже этот товар в корзине
+    const existingItem = cartItems.find(item => item.id === product.id);
+
+    if (existingItem) {
+      // Если товар уже есть, увеличиваем его количество
+      onUpdateQuantity(product.id, existingItem.quantity + 1);
+    } else {
+      // Если товара нет в корзине, добавляем новый товар с количеством 1
+      setCartItems(prevItems => [
+        ...prevItems,
+        { ...product, quantity: 1 },
+      ]);
+    }
   };
 
+
   const handleRemoveFromCart = (id) => {
-    console.log(id);
     setCartItems((prevItems) => prevItems.filter(item => item.id !== id));
   };
+
+  // Функция для обновления количества товара
+  const onUpdateQuantity = (id, newQuantity) => {
+    setCartItems(prevItems => {
+      return prevItems.map(item =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      );
+    });
+  };
+
 
   const settings = {
     dots: true,           // Отображение точек навигации
@@ -100,6 +121,7 @@ function Main() {
               text={product.text}
               weight={product.weight}
               price={product.price}
+              quantity={product.quantity}
               onAddToCart={handleAddToCart}  // Передаем функцию для добавления в корзину
             />
           ))}
@@ -125,6 +147,8 @@ function Main() {
               text={product.text}
               weight={product.weight}
               price={product.price}
+              quantity={product.quantity}
+              className="color-red"
               onAddToCart={handleAddToCart}  // Передаем функцию для добавления в корзину
             />
           ))}
@@ -150,6 +174,7 @@ function Main() {
               text={product.text}
               weight={product.weight}
               price={product.price}
+              quantity={product.quantity}
               onAddToCart={handleAddToCart}  // Передаем функцию для добавления в корзину
             />
           ))}
@@ -158,9 +183,10 @@ function Main() {
 
       <IconsCart
         onButtonClick={handleButtonClick}
-        isCartVisible={cartItems.length > 0} />
+        isCartVisible={cartItems.length > 0}
+        items={cartItems} />
 
-      {isCartVisible && <Cart items={cartItems} onRemoveItem={handleRemoveFromCart} />}
+      {isCartVisible && <Cart items={cartItems} onRemoveItem={handleRemoveFromCart} onUpdateQuantity={onUpdateQuantity} />}
 
     </main>
   );

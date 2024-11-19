@@ -12,7 +12,8 @@ $light-background-color: #ffffffb3;
 }
 
 body {
-  background-image: linear-gradient(0.25turn, $background-color, $primary-color);
+  // background-image: linear-gradient(0.25turn, $background-color, $primary-color);
+  background-color: #000000;
 
   &.no-scroll {
     overflow: hidden;
@@ -170,10 +171,11 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 270px);
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     margin: 20px;
   }
 }
+
 
 .product__sushi {
   position: relative;
@@ -186,7 +188,10 @@ p {
 
   &:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 100px 10px rgba($primary-color, 1);
   }
+
+
 
   &__img {
     width: 240px;
@@ -208,33 +213,87 @@ p {
   }
 
   &__button {
+    font-family: "Exo 2", sans-serif;
     min-width: 90px;
     min-height: 40px;
     border-radius: 15px;
     border: none;
-    transition: transform 0.3s;
+    background-color: $secondary-color; // Основной цвет кнопки
+    color: $primary-color; // Цвет текста
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.5s ease, background-color 0.7s ease, box-shadow 0.5s ease, color 0.7s;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Эффект при наведении
     &:hover {
-      background-color: $primary-color;
-      fill: $secondary-color;
+      background-color: $primary-color; // Меняем цвет фона
+      color: $secondary-color; // Меняем цвет текста
+      box-shadow: 0 4px 15px rgba($primary-color, 1); // Лёгкое свечение
     }
 
+    // Анимация нажатия
     &:active {
-      transform: scale(0.9);
+      transform: scale(0.9); // Уменьшаем кнопку
+      box-shadow: 0 2px 8px rgba($primary-color, 0.3); // Слегка убираем свечение
     }
   }
+
 }
+
 
 .cart__icon {
   position: fixed;
-  top: 100px;
-  right: 0;
+  top: 400px;
+  right: 10px;
   z-index: 1000;
-  display: none; // Изначально скрыто
-}
+  opacity: 0; // Изначально полностью прозрачный
+  transform: translateY(10px); // Слегка смещён вниз
+  pointer-events: none; // Отключаем взаимодействие
+  transition: opacity 0.3s ease, transform 0.3s ease; // Плавные переходы
 
-.cart__icon.show {
-  display: block; // Показываем, если есть товары в корзине
+  &.show {
+    opacity: 1; // Полностью видимый
+    transform: translateY(0); // Возвращаем в исходное положение
+    pointer-events: auto; // Включаем взаимодействие
+  }
+
+  &__button {
+    position: relative;
+    width: 100px; // Размер кнопки
+    height: 100px;
+    border-radius: 50%; // Круглая форма
+    border: none; // Без обводки
+    color: #fff; // Цвет текста
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; // Плавный переход
+
+    &__img {
+      width: 43px;
+    }
+
+    &__badge {
+      position: absolute;
+      top: -3px;
+      right: 0px;
+      border-radius: 15px;
+      padding: 6px 11px;
+      background-color: $primary-color;
+    }
+
+    &:hover {
+      box-shadow: 0 0 100px 10px rgba($primary-color, 1);
+      transform: scale(1.1); // Лёгкое увеличение при наведении
+    }
+  }
 }
 
 .cart {
@@ -320,7 +379,6 @@ p {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  // padding: 30px;
   border-top: solid;
   background-color: #00849059;
 

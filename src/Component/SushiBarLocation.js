@@ -21,11 +21,21 @@ const SushiBarLocation = () => {
       if (!mapElement.dataset.mapInitialized) {
         const map = new window.ymaps.Map(mapElement, {
           center: [52.138444, 29.318262],
-          zoom: 15,
+          zoom: 16,
           controls: ['zoomControl'], // Добавляем только кнопки зума
         });
 
-        map.behaviors.disable(['scrollZoom', 'drag']); // Отключаем масштабирование и перемещение карты
+        map.behaviors.disable(['scrollZoom']); // Отключаем масштабирование и перемещение карты
+
+        // Добавляем маркер на карту
+        const marker = new window.ymaps.Placemark([52.138444, 29.318262], {
+          balloonContent: 'Суши-бар'
+        }, {
+          preset: 'islands#icon',
+          iconColor: '#0095b6'
+        });
+
+        map.geoObjects.add(marker); // Добавляем маркер на карту
 
         // Устанавливаем флаг, что карта инициализирована
         mapElement.dataset.mapInitialized = true;

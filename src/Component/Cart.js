@@ -1,19 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-function Cart({ items, onRemoveItem }) {
-  const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('');
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+function Cart({ items, onRemoveItem, onUpdateQuantity }) {
+
+  // const [selectedDeliveryOption, setSelectedDeliveryOption] = useState('');
+  // const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
   const [isVisible, setIsVisible] = useState(true); // Состояние для видимости корзины
   const cartRef = useRef(null); // Реф для контейнера корзины
 
-  // Обработчик изменения выбранной опции
-  const handleDeliveryOptionChange = (event) => {
-    setSelectedDeliveryOption(event.target.value);
+  // // Обработчик изменения выбранной опции доставки
+  // const handleDeliveryOptionChange = (event) => {
+  //   setSelectedDeliveryOption(event.target.value);
+  // };
+
+  // // Обработчик изменения выбранного способа оплаты
+  // const handlePaymentMethodChange = (event) => {
+  //   setSelectedPaymentMethod(event.target.value);
+  // };
+
+  const onIncreaseQuantity = (id) => {
+    const existingItem = items.find((item) => item.id === id);
+    if (existingItem) {
+      onUpdateQuantity(id, existingItem.quantity + 1);
+    }
   };
 
-  const handlePaymentMethodChange = (event) => {
-    setSelectedPaymentMethod(event.target.value);
+  const onDecreaseQuantity = (id) => {
+    const existingItem = items.find((item) => item.id === id);
+    if (existingItem) {
+      if (existingItem.quantity > 1) {
+        onUpdateQuantity(id, existingItem.quantity - 1);
+      } else {
+        onRemoveItem(id);
+      }
+    }
   };
+
+  // Вычисляем общую сумму всех товаров в корзине
+  const totalAmount = items.reduce((total, item) => {
+    return total + (item.price * item.quantity);  // Умножаем цену на количество для каждого товара
+  }, 0); // Начальная сумма равна 0
 
   // Закрытие корзины при клике вне ее
   const handleClickOutside = (event) => {
@@ -40,6 +65,7 @@ function Cart({ items, onRemoveItem }) {
 
   if (!isVisible) return null; // Если корзина скрыта, не отображаем компонент
 
+
   return (
     <div className="cart">
       <div className="cart__info">
@@ -53,8 +79,21 @@ function Cart({ items, onRemoveItem }) {
               <div className="cart__product" key={item.id}>
                 <img src={item.img} alt={item.title} className="cart__img" />
                 <p>{item.title}</p>
-                <p>{item.weight}</p>
-                <p>{item.price}</p>
+                <div className="cart__quantity">
+                  <button
+                    className="cart__button-decrease"
+                    onClick={() => onDecreaseQuantity(item.id)}
+                  >
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    className="cart__button-increase"
+                    onClick={() => onIncreaseQuantity(item.id)}
+                  >
+                    +
+                  </button>
+                </div>
                 <button
                   className="cart__button-delete"
                   onClick={() => onRemoveItem(item.id)}
@@ -65,12 +104,19 @@ function Cart({ items, onRemoveItem }) {
             ))
           )}
 
-
+          {/* Отображение общей суммы */}
           <div className="cart__order-amount">
-            <p>Сумма:</p>
-            <p>{items.reduce((total, item) => total + parseFloat(item.price || 0), 0)} руб.</p>
+            <p>Общая сумма: {totalAmount} руб.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
+export default Cart;
+
+{/* 
           <div className="cart__order-details">
             <p>Ваше имя</p>
             <input />
@@ -142,12 +188,4 @@ function Cart({ items, onRemoveItem }) {
 
           <div className="cart__button">
             <button className="cart__button__shopping">Оформить заказ</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default Cart;
+          </div> */}
