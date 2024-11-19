@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import '../Style/Slider.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -21,7 +22,7 @@ const SliderComponent = () => {
         <div>
           <img
             className="img__slider"
-            src="/ImgSlider/pexels-frans-van-heerden-201846-670705.jpg"
+            src="/ImgSlider/Дизайн без названия.png"
             alt="Slide 1"
           />
         </div>

@@ -16,17 +16,6 @@ function Header() {
           </div>
         </a>
       </section>
-      <nav className="header__nav">
-        <a href="#sushi" className="header__nav__link">
-          <h2 className="header__nav__title">Меню</h2>
-        </a>
-        <a href="#" className="header__nav__link">
-          <h2 className="header__nav__title">Акции</h2>
-        </a>
-        <a href="#" className="header__nav__link">
-          <h2 className="header__nav__title">Доставка</h2>
-        </a>
-      </nav>
     </header>
   );
 }

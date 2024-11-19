@@ -13,10 +13,11 @@ $nav-color-hover: rgb(85 222 240 / 85%);
 }
 
 body {
-  background-image: url(pexels-scottwebb-2824173.webp);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  // background-image: url(pexels-scottwebb-2824173.webp);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+  background-color: #000018;
 
   &.no-scroll {
     overflow: hidden;
@@ -36,9 +37,6 @@ p {
   font-weight: 800;
   font-style: normal;
 }
-
-
-
 
 .header {
   display: flex;
@@ -64,7 +62,7 @@ p {
     align-items: center;
 
     &__img {
-      max-width: 235px;
+      max-width: 120px;
     }
 
     &__link {
@@ -73,32 +71,8 @@ p {
       text-align: center;
       text-decoration: none;
       color: $secondary-color;
-      gap: 225px;
-    }
-  }
-
-  &__nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 72px;
-    font-size: 17px;
-    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
-    border: solid 1px $primary-color;
-    box-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color, 0 0 30px $primary-color;
-    /* Эффект свечения */
-    border-radius: 10px;
-    padding: 10px 40px;
-
-    &__link {
-      text-decoration: none;
-      color: $secondary-color;
-      transition: color 0.2s, transform 0.2s;
-
-      &:hover {
-        color: $nav-color-hover;
-      }
+      gap: 52px;
+      margin-right: 200px;
     }
   }
 
@@ -117,7 +91,7 @@ p {
   justify-content: center;
   gap: 50px;
   padding: 20px 6px;
-  margin: 70px 37px;
+  margin: 70px 45px 20px 45px;
   position: sticky;
   top: 5px;
   z-index: 1;
@@ -125,7 +99,7 @@ p {
   border: solid 1px #1074bb;
   box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
   border-radius: 10px;
-  background: rgb(0 0 0 / 28%);
+  background: rgb(0 0 0 / 90%);
 
   .nav__menu__img {
     max-width: 55px;
@@ -155,47 +129,31 @@ p {
   .menu__link.active .menu__text {
     color: $nav-color-hover;
   }
-}
 
-.slider-container {
-  width: 80vw; // Ширина контейнера
-  margin: 0 auto; // Выравнивание по центру
-}
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 72px;
+    font-size: 17px;
+    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
+    border: solid 1px $primary-color;
+    box-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color, 0 0 30px $primary-color;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 460px;
+    width: 500px;
+    z-index: 1;
+    background: rgb(0 0 0 / 90%);
 
-.img__slider {
-  width: 100%;
-  height: auto;
-  border-radius: 10px; // Скругленные углы
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Тень
-  transition: transform 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.05); // Увеличение изображения при наведении
-  }
-}
+    &__link {
+      text-decoration: none;
+      color: $secondary-color;
+      transition: color 0.2s, transform 0.2s;
 
-// Стили кнопок
-.slick-prev,
-.slick-next {
-  font-size: 20px;
-  color: #000; // Цвет кнопок
-  z-index: 10;
-}
-
-// Навигационные точки
-.slick-dots {
-  li {
-    button {
-      &:before {
-        color: gray;
-      }
-    }
-
-    &.slick-active {
-      button {
-        &:before {
-          color: black;
-        }
+      &:hover {
+        color: $nav-color-hover;
       }
     }
   }

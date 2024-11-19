@@ -29,7 +29,7 @@ function Main() {
   return (
     <main className="main">
 
-      <SliderComponent/>
+      <SliderComponent />
 
       <MenuNav />
 
@@ -40,9 +40,8 @@ function Main() {
       <SectionProductBakedSushi handleAddToCart={handleAddToCart} />
 
       <IconsCart onButtonClick={handleButtonClick} items={cartItems} />
+
       {isCartVisible && <Cart />}
-
-
 
     </main>
   );
