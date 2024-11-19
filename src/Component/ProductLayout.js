@@ -1,8 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store/cartSlice'; // Импортируем действие для добавления товара
 
-function ProductLayout({ id, img, title, weight, text, price, quantity, className, onAddToCart }) {
+function ProductLayout({ id, img, title, weight, text, price, quantity, className }) {
+  const dispatch = useDispatch(); // Инициализируем dispatch для отправки действий
+
+  // Функция обработки добавления товара в корзину
   const handleAddToCart = () => {
-    onAddToCart({ id, img, title, weight, text, price, quantity });
+    dispatch(addItem({ id, img, title, weight, text, price, quantity })); // Отправляем действие в Redux
   };
 
   return (
@@ -14,7 +19,7 @@ function ProductLayout({ id, img, title, weight, text, price, quantity, classNam
       <p className="product__sushi__price">{price} руб.</p>
       <button
         className="product__sushi__button"
-        onClick={handleAddToCart}
+        onClick={handleAddToCart} // Вызов dispatch для добавления товара в корзину
       >
         Добавить в корзину
       </button>

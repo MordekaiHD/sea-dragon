@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -5,7 +6,10 @@
 }
 
 body {
-  background-color: #000000;
+  background-image: url(pexels-scottwebb-2824173.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 body.no-scroll {
   overflow: hidden;
@@ -35,6 +39,7 @@ p {
 }
 .header__title {
   font-size: 90px;
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 }
 .header__text {
   font-size: 25px;
@@ -63,9 +68,12 @@ p {
   align-items: center;
   gap: 72px;
   font-size: 17px;
-  background: rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+  border: solid 1px #1074bb;
+  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  /* Эффект свечения */
   border-radius: 10px;
-  padding: 10px 140px;
+  padding: 10px 40px;
 }
 .header__nav__link {
   text-decoration: none;
@@ -73,7 +81,7 @@ p {
   transition: color 0.2s, transform 0.2s;
 }
 .header__nav__link:hover {
-  color: red;
+  color: rgba(85, 222, 240, 0.85);
 }
 .header__info__img {
   min-width: 98.9vw;
@@ -89,11 +97,16 @@ p {
   align-content: center;
   justify-content: center;
   gap: 50px;
-  padding: 30px 0;
+  padding: 20px 6px;
+  margin: 70px 37px;
   position: sticky;
-  top: 0px;
+  top: 5px;
   z-index: 1;
-  background-image: linear-gradient(0.25turn, #000000, #0c63a0);
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+  border: solid 1px #1074bb;
+  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
 }
 .menu__nav .nav__menu__img {
   max-width: 55px;
@@ -107,20 +120,47 @@ p {
   color: rgba(255, 255, 255, 0.8196078431);
   flex-direction: row;
   flex-wrap: wrap;
-  transition: color 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
 .menu__nav .menu__link:hover {
-  color: #6aa9fa;
-  transform: scale(1.04);
+  color: rgba(85, 222, 240, 0.85);
 }
 .menu__nav .menu__link .menu__text {
   text-align: center;
-  font-size: 20px;
+  font-size: 24px;
+}
+.menu__nav .menu__link.active .menu__text {
+  color: rgba(85, 222, 240, 0.85);
+}
+
+.slider-container {
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .img__slider {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+.img__slider:hover {
+  transform: scale(1.05);
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 20px;
+  color: #000;
+  z-index: 10;
+}
+
+.slick-dots li button:before {
+  color: gray;
+}
+.slick-dots li.slick-active button:before {
+  color: black;
 }
 
 .product__title {
@@ -152,7 +192,7 @@ p {
 .product__sushi {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   background-color: rgba(255, 255, 255, 0.7019607843);
   border-radius: 15px;
   padding: 15px;
@@ -160,22 +200,23 @@ p {
 }
 .product__sushi:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 100px 10px #1074bb;
+  box-shadow: 0 0 10px 10px #1074bb;
 }
 .product__sushi__img {
   width: 240px;
   height: 220px;
 }
 .product__sushi__title {
-  font-size: 25px;
+  font-size: 24px;
 }
 .product__sushi__text {
-  min-height: 52px;
-  font-size: 20px;
+  min-height: 47px;
+  font-size: 16px;
   color: rgba(0, 0, 0, 0.7294117647);
 }
 .product__sushi__price {
   font-size: 23px;
+  padding: 5px;
 }
 .product__sushi__button {
   font-family: "Exo 2", sans-serif;
@@ -229,7 +270,6 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .cart__icon__button__img {
@@ -244,7 +284,7 @@ p {
   background-color: #1074bb;
 }
 .cart__icon__button:hover {
-  box-shadow: 0 0 100px 10px #1074bb;
+  box-shadow: 0 0 100px 10px #2dd19e;
   transform: scale(1.1);
 }
 

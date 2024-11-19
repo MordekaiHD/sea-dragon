@@ -4,6 +4,7 @@ $secondary-color: #ffffffd1;
 $hover-color: #6aa9fa;
 $background-color: #000000fa;
 $light-background-color: #ffffffb3;
+$nav-color-hover: rgb(85 222 240 / 85%);
 
 * {
   padding: 0;
@@ -12,8 +13,10 @@ $light-background-color: #ffffffb3;
 }
 
 body {
-  // background-image: linear-gradient(0.25turn, $background-color, $primary-color);
-  background-color: #000000;
+  background-image: url(pexels-scottwebb-2824173.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   &.no-scroll {
     overflow: hidden;
@@ -35,6 +38,8 @@ p {
 }
 
 
+
+
 .header {
   display: flex;
   justify-items: center;
@@ -45,6 +50,7 @@ p {
 
   &__title {
     font-size: 90px;
+    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
   }
 
   &__text {
@@ -78,10 +84,12 @@ p {
     align-items: center;
     gap: 72px;
     font-size: 17px;
-    background: rgba(0, 0, 0, 0.4);
-    ;
+    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
+    border: solid 1px $primary-color;
+    box-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color, 0 0 30px $primary-color;
+    /* Эффект свечения */
     border-radius: 10px;
-    padding: 10px 140px;
+    padding: 10px 40px;
 
     &__link {
       text-decoration: none;
@@ -89,7 +97,7 @@ p {
       transition: color 0.2s, transform 0.2s;
 
       &:hover {
-        color: red;
+        color: $nav-color-hover;
       }
     }
   }
@@ -108,11 +116,16 @@ p {
   align-content: center;
   justify-content: center;
   gap: 50px;
-  padding: 30px 0;
+  padding: 20px 6px;
+  margin: 70px 37px;
   position: sticky;
-  top: 0px;
+  top: 5px;
   z-index: 1;
-  background-image: linear-gradient(0.25turn, #000000, #0c63a0);
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+  border: solid 1px #1074bb;
+  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  border-radius: 10px;
+  background: rgb(0 0 0 / 28%);
 
   .nav__menu__img {
     max-width: 55px;
@@ -127,23 +140,65 @@ p {
     color: $secondary-color;
     flex-direction: row;
     flex-wrap: wrap;
-    transition: color 0.2s, transform 0.2s;
+    transition: transform 0.2s;
 
     &:hover {
-      color: $hover-color;
-      transform: scale(1.04);
+      color: $nav-color-hover;
     }
 
     .menu__text {
       text-align: center;
-      font-size: 20px;
+      font-size: 24px;
     }
+  }
+
+  .menu__link.active .menu__text {
+    color: $nav-color-hover;
   }
 }
 
+.slider-container {
+  width: 80vw; // Ширина контейнера
+  margin: 0 auto; // Выравнивание по центру
+}
+
 .img__slider {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  border-radius: 10px; // Скругленные углы
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Тень
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05); // Увеличение изображения при наведении
+  }
+}
+
+// Стили кнопок
+.slick-prev,
+.slick-next {
+  font-size: 20px;
+  color: #000; // Цвет кнопок
+  z-index: 10;
+}
+
+// Навигационные точки
+.slick-dots {
+  li {
+    button {
+      &:before {
+        color: gray;
+      }
+    }
+
+    &.slick-active {
+      button {
+        &:before {
+          color: black;
+        }
+      }
+    }
+  }
 }
 
 .product__title {
@@ -180,7 +235,7 @@ p {
 .product__sushi {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   background-color: $light-background-color;
   border-radius: 15px;
   padding: 15px;
@@ -188,7 +243,7 @@ p {
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 100px 10px rgba($primary-color, 1);
+    box-shadow: 0 0 10px 10px rgba($primary-color, 1);
   }
 
 
@@ -199,17 +254,18 @@ p {
   }
 
   &__title {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   &__text {
-    min-height: 52px;
-    font-size: 20px;
+    min-height: 47px;
+    font-size: 16px;
     color: #000000ba;
   }
 
   &__price {
     font-size: 23px;
+    padding: 5px;
   }
 
   &__button {
@@ -251,15 +307,15 @@ p {
   top: 400px;
   right: 10px;
   z-index: 1000;
-  opacity: 0; // Изначально полностью прозрачный
-  transform: translateY(10px); // Слегка смещён вниз
-  pointer-events: none; // Отключаем взаимодействие
-  transition: opacity 0.3s ease, transform 0.3s ease; // Плавные переходы
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none; // Отключаем взаимодействие изначально
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
   &.show {
     opacity: 1; // Полностью видимый
     transform: translateY(0); // Возвращаем в исходное положение
-    pointer-events: auto; // Включаем взаимодействие
+    pointer-events: auto; // Включаем взаимодействие, когда иконка видна
   }
 
   &__button {
@@ -273,7 +329,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease; // Плавный переход
 
     &__img {
@@ -290,7 +345,7 @@ p {
     }
 
     &:hover {
-      box-shadow: 0 0 100px 10px rgba($primary-color, 1);
+      box-shadow: 0 0 100px 10px rgba(#2dd19e, 1);
       transform: scale(1.1); // Лёгкое увеличение при наведении
     }
   }

@@ -21,7 +21,7 @@ const SushiBarLocation = () => {
       if (!mapElement.dataset.mapInitialized) {
         const map = new window.ymaps.Map(mapElement, {
           center: [52.138444, 29.318262],
-          zoom: 16,
+          zoom: 17,
           controls: ['zoomControl'], // Добавляем только кнопки зума
         });
 
@@ -46,7 +46,8 @@ const SushiBarLocation = () => {
     return () => {
       const script = document.querySelector('script[src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"]');
       if (script) {
-        document.head.removeChild(script); // Удаляем скрипт, если он был загружен
+        // Удаляем скрипт, если он был загружен (это удаление нужно для случая, когда компонент размонтируется)
+        document.head.removeChild(script);
       }
     };
   }, []); // Запускается только один раз при монтировании компонента
