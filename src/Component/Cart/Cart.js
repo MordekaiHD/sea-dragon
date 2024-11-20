@@ -90,8 +90,8 @@ function Cart() {
                     </button>
                   </div>
 
-                  <div className="cart__product__button-delete">
-                    <button onClick={() => dispatch(removeItem(item.id))} >
+                  <div className="cart__product__button">
+                    <button className="cart__product__button-delete" onClick={() => dispatch(removeItem(item.id))} >
                       Удалить
                     </button>
                   </div>

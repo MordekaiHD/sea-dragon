@@ -75,14 +75,14 @@ function MenuNav() {
         </a>
       </nav>
       <nav className="menu__nav__info">
-        <a href="#sushi" className="menu__nav__info__link">
-          <h2 className="menu__nav__info__text">Меню</h2>
-        </a>
         <a href="#" className="menu__nav__info__link">
           <h2 className="menu__nav__info__text">Акции</h2>
         </a>
         <a href="#" className="menu__nav__info__link">
           <h2 className="menu__nav__info__text">Доставка</h2>
+        </a>
+        <a href="#sushi" className="menu__nav__info__link">
+          <h2 className="menu__nav__info__text">О нас</h2>
         </a>
       </nav>
     </>

@@ -5,4 +5,5 @@
   margin: 100px 40px;
   overflow: hidden;
   box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  filter: brightness(85%);
 }/*# sourceMappingURL=style.css.map */

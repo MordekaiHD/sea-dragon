@@ -1,10 +1,10 @@
-// Переменные для цветов и шрифтов
-$primary-color: #1074bb;
-$secondary-color: #ffffffd1;
-$hover-color: #6aa9fa;
+$primary-color: #64bfff;
+$secondary-color: #ffffff;
 $background-color: #000000fa;
-$light-background-color: #ffffffb3;
-$nav-color-hover: rgb(85 222 240 / 85%);
+$botton-color: #005c9b;
+$text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+$box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+
 
 * {
   padding: 0;
@@ -13,10 +13,6 @@ $nav-color-hover: rgb(85 222 240 / 85%);
 }
 
 body {
-  // background-image: url(pexels-scottwebb-2824173.webp);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-position: center;
   background-color: #000018;
 
   &.no-scroll {
@@ -38,6 +34,7 @@ p {
   font-style: normal;
 }
 
+
 .header {
   display: flex;
   justify-items: center;
@@ -48,7 +45,7 @@ p {
 
   &__title {
     font-size: 90px;
-    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
+    text-shadow: $text-shadow;
   }
 
   &__text {
@@ -95,9 +92,9 @@ p {
   position: sticky;
   top: 5px;
   z-index: 1;
-  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+  text-shadow: $text-shadow;
   border: solid 1px #1074bb;
-  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  box-shadow: $box-shadow;
   border-radius: 10px;
   background: rgb(0 0 0 / 90%);
 
@@ -117,7 +114,7 @@ p {
     transition: transform 0.2s;
 
     &:hover {
-      color: $nav-color-hover;
+      color: $primary-color;
     }
 
     .menu__text {
@@ -127,7 +124,7 @@ p {
   }
 
   .menu__link.active .menu__text {
-    color: $nav-color-hover;
+    color: $primary-color;
   }
 
   &__info {
@@ -136,9 +133,9 @@ p {
     align-items: center;
     gap: 72px;
     font-size: 17px;
-    text-shadow: 0 0 10px $primary-color, 0 0 10px $hover-color;
+    text-shadow: $text-shadow;
     border: solid 1px $primary-color;
-    box-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color, 0 0 30px $primary-color;
+    box-shadow: $box-shadow;
     border-radius: 10px;
     padding: 15px 6px;
     margin-left: 460px;
@@ -153,10 +150,23 @@ p {
       transition: color 0.2s, transform 0.2s;
 
       &:hover {
-        color: $nav-color-hover;
+        color: $primary-color;
       }
     }
   }
+}
+
+.scroll__info {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background-color: #64bfff;
+  top: 0;
+
+  &__position {
+
+  }
+
 }
 
 .product__title {
@@ -193,7 +203,7 @@ p {
   position: relative;
   display: grid;
   gap: 10px;
-  background-color: $light-background-color;
+  background-color: #ffffffb3;
   border-radius: 15px;
   padding: 15px;
   transition: transform 0.4s;
@@ -232,7 +242,7 @@ p {
     border-radius: 15px;
     border: none;
     background-color: $secondary-color; // Основной цвет кнопки
-    color: $primary-color; // Цвет текста
+    color: $botton-color; // Цвет текста
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -244,7 +254,7 @@ p {
 
     // Эффект при наведении
     &:hover {
-      background-color: $primary-color; // Меняем цвет фона
+      background-color: $botton-color; // Меняем цвет фона
       color: $secondary-color; // Меняем цвет текста
       box-shadow: 0 4px 15px rgba($primary-color, 1); // Лёгкое свечение
     }
@@ -276,9 +286,9 @@ p {
 
   &__button {
     position: relative;
-    width: 100px; // Размер кнопки
-    height: 100px;
-    border-radius: 50%; // Круглая форма
+    width: 80px; // Размер кнопки
+    height: 80px;
+    border-radius: 53px; // Круглая форма
     border: none; // Без обводки
     color: #fff; // Цвет текста
     font-size: 16px;
@@ -288,7 +298,7 @@ p {
     transition: box-shadow 0.3s ease, transform 0.3s ease; // Плавный переход
 
     &__img {
-      width: 43px;
+      width: 35px;
     }
 
     &__badge {
@@ -297,11 +307,11 @@ p {
       right: 0px;
       border-radius: 15px;
       padding: 6px 11px;
-      background-color: $primary-color;
+      background-color: $botton-color;
     }
 
     &:hover {
-      box-shadow: 0 0 100px 10px rgba(#2dd19e, 1);
+      box-shadow: 0 0 100px 10px rgba($botton-color, 1);
       transform: scale(1.1); // Лёгкое увеличение при наведении
     }
   }
@@ -313,7 +323,7 @@ p {
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
 
   &__info {
     display: flex;
@@ -347,8 +357,8 @@ p {
     font-size: 16px;
     gap: 30px;
     width: 550px;
-    box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
-    background: #000018;
+    box-shadow: $box-shadow;
+    background: #000014c7;
     margin-top: 60px;
   }
 
@@ -399,10 +409,10 @@ p {
       }
     }
 
-    &__button-delete {
+    &__button {
       text-align: center; // Центрируем кнопку удаления
 
-      button {
+      &-delete {
         padding: 5px 15px;
         background-color: red;
         color: white;
@@ -420,44 +430,39 @@ p {
     align-items: flex-end;
   }
 
-  &__order-position {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
 }
 
 .footer {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 
+  &__logo {
+    margin-right: 390px;
 
-  &__logo__link {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-decoration: none;
-    color: $secondary-color;
-    padding: 15px;
-    border-radius: 15px;
-  }
+    &__link {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8196078431);
+      padding-bottom: 35px;
+      border-radius: 15px;
+    }
 
-  &__logo__img {
-    max-width: 60px;
-    padding-right: 25px;
-  }
+    &__img {
+      max-width: 60px;
+      padding-right: 25px;
+    }
 
-  &__logo__title {
-    text-align: center;
-  }
-
-  &__logo__store {
-    text-align: center;
-    margin-top: 20px;
+    &__title {
+      text-align: center;
+      text-shadow: $text-shadow;
+    }
   }
 
   &__nav {
@@ -466,41 +471,46 @@ p {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
-  }
+    color: rgba(255, 255, 255, 0.8196078431);
+    text-shadow: $text-shadow;
 
-  &__article__nav {
-    display: grid;
-    gap: 10px;
+    &__info {
+      display: grid;
+      gap: 10px;
 
-    .article__nav__text {
-      text-decoration: none;
-      color: $secondary-color;
+      &-text {
+        text-decoration: none;
+        color: $secondary-color;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
-  }
 
-  &__article__order {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    gap: 10px;
+    &__order {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      gap: 10px;
 
-    .article__order__tel {
-      text-decoration: none;
-      color: $secondary-color;
+      &-tel {
+        text-decoration: none;
+        color: $secondary-color;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
-  }
 
-  &__article__workingTime {
-    display: grid;
-    gap: 10px;
+    &__workingTime {
+      display: grid;
+      gap: 10px;
 
-    .article__workingTime__text {
-      color: #fff;
+      &-text {
+        color: #fff;
+      }
     }
-  }
-
-  &__socialNetworks__instagram {
-    max-width: 40px;
-    padding-top: 10px;
   }
 }
