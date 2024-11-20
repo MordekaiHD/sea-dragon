@@ -1,0 +1,62 @@
+$arrow-size: 50px; // Размер стрелок
+$arrow-color: rgba(255, 255, 255, 0.8); // Цвет фона стрелок
+$arrow-hover-color: rgba(255, 255, 255, 1); // Цвет при наведении
+
+.slider-container {
+  width: 93vw;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative; // Для размещения стрелок поверх
+  margin-left: 40px;
+  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+
+  .img__slider {
+    width: 100%; // Используем всю ширину контейнера
+    height: 400px; // Высота слайдов
+    border-radius: 20px; // Скругленные углы
+  }
+
+  // Стрелки
+  .slick-arrow {
+    position: absolute; // Размещаем поверх
+    top: 50%; // Центрируем по вертикали
+    transform: translateY(-50%); // Для точного выравнивания
+    z-index: 10; // Поверх всего
+    width: $arrow-size; // Размер стрелок
+    height: $arrow-size;
+    border-radius: 50%; // Круглые стрелки
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb; // При наведении
+    }
+
+    &.slick-prev {
+      left: 10px; // Смещаем влево
+    }
+
+    &.slick-next {
+      right: 10px; // Смещаем вправо
+    }
+  }
+
+  // Навигационные точки
+  .slick-dots {
+    li {
+      button {
+        &:before {
+          color: #888; // Цвет точек
+          font-size: 12px; // Размер точек
+        }
+      }
+
+      &.slick-active button:before {
+        color: #555; // Цвет активной точки
+      }
+    }
+  }
+}

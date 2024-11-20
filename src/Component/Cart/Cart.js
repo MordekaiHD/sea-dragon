@@ -58,40 +58,52 @@ function Cart() {
         <div className="cart__order-information" ref={cartRef}>
           <h1 className="cart__title">Ваш заказ</h1>
 
-          {items.length === 0 ? (
-            <p>Корзина пуста</p>
-          ) : (
-            items.map((item) => (
-              <div className="cart__product" key={item.id}>
-                <img src={item.img} alt={item.title} className="cart__img" />
-                <p>{item.title}</p>
-                <div className="cart__quantity">
-                  <button
-                    className="cart__button-decrease"
-                    onClick={() => onDecreaseQuantity(item.id)}
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    className="cart__button-increase"
-                    onClick={() => onIncreaseQuantity(item.id)}
-                  >
-                    +
-                  </button>
+          <div className='cart__order-position'>
+            <hr style={{ border: "1px solid #fff", margin: "20px 0" }} />
+            {items.length === 0 ? (
+              <p>Корзина пуста</p>
+            ) : (
+              items.map((item) => (
+
+                <div className="cart__product" key={item.id}>
+                  <div className="cart__product__img">
+                    <img className="cart__product__img-style" src={item.img} alt={item.title} />
+                  </div>
+
+                  <div className='cart__product__text'>
+                    <p className='cart__product__text-style' >{item.title}</p>
+                  </div>
+
+                  <div className="cart__product__quantity">
+                    <button
+                      className="cart__product__quantity__button-decrease"
+                      onClick={() => onDecreaseQuantity(item.id)}
+                    >
+                      -
+                    </button>
+                    <span className="cart__product__button__quantity-style">{item.quantity}</span>
+                    <button
+                      className="cart__product__quantity__button-increase"
+                      onClick={() => onIncreaseQuantity(item.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className="cart__product__button-delete">
+                    <button onClick={() => dispatch(removeItem(item.id))} >
+                      Удалить
+                    </button>
+                  </div>
                 </div>
-                <button
-                  className="cart__button-delete"
-                  onClick={() => dispatch(removeItem(item.id))}
-                >
-                  Удалить
-                </button>
-              </div>
-            ))
-          )}
+              ))
+            )}
+            <hr style={{ border: "1px solid #fff", margin: "20px 0" }} />
+          </div>
+
 
           {/* Отображение общей суммы */}
-          <div className="cart__order-amount">
+          <div div className="cart__order-amount" >
             <p>Общая сумма: {totalAmount} руб.</p>
           </div>
         </div>

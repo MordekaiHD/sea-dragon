@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../Style/SushiBarLocation/style.css';
 
 const SushiBarLocation = () => {
   useEffect(() => {
@@ -52,7 +53,7 @@ const SushiBarLocation = () => {
     };
   }, []); // Запускается только один раз при монтировании компонента
 
-  return <div id="map" style={{ width: '100vw', height: '400px' }} />;
+  return <div className='map' id="map" style={{ width: '100vw', height: '400px' }} />;
 };
 
 export default SushiBarLocation;

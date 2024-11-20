@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import '../Style/Slider.css';
+import '../Style/Slider/Slider.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -22,28 +22,28 @@ const SliderComponent = () => {
         <div>
           <img
             className="img__slider"
-            src="/ImgSlider/Дизайн без названия.png"
+            src="/ImgSlider/Sale1.png"
             alt="Slide 1"
           />
         </div>
         <div>
           <img
             className="img__slider"
-            src="/ImgSlider/pexels-pixabay-357756.jpg"
+            src="/ImgSlider/Sale2.png"
             alt="Slide 2"
           />
         </div>
         <div>
           <img
             className="img__slider"
-            src="/ImgSlider/pexels-rajesh-tp-749235-2098085.jpg"
+            src="/ImgSlider/Sale3.png"
             alt="Slide 3"
           />
         </div>
         <div>
           <img
             className="img__slider"
-            src="/ImgSlider/pexels-valeriya-1148086.jpg"
+            src="/ImgSlider/Sale4.png"
             alt="Slide 4"
           />
         </div>
