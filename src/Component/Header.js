@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header className="header">
       <section className="header__logo">
-        <a href="#" className="header__logo__link">
+        <Link href="#" className="header__logo__link">
           <div className="header__logo__img">
             <img
               src="/ImgHeader/Dragon_Logo.png"
@@ -14,7 +16,7 @@ function Header() {
             <h1 className="header__title">Морской Дракон</h1>
             <p className="header__text">суши - роллы</p>
           </div>
-        </a>
+        </Link>
       </section>
     </header>
   );

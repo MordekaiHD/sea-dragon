@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProductLayout from "../ProductLayout"; // Компонент для отображения продукта
+import ProductLayout from "../SectionProduct/ProductLayout"; // Компонент для отображения продукта
 import products from "../ProductJSON/ProductSushi.js"; // Импорт JSON с данными
 
 function SectionProductSushi({ handleAddToCart }) {
@@ -9,7 +9,11 @@ function SectionProductSushi({ handleAddToCart }) {
   return (
     <section className="section__product__sushi">
       <h1 className="product__title" id="sushi">
-        Суши
+        Суши<img
+          src="/ImgSectionMenu/sushi/sushi.png"
+          alt="sushi"
+          className="product__title__img"
+        />
       </h1>
       <article className="product__article__sushi">
         {suchi.length > 0 ? (

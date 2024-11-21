@@ -5,7 +5,7 @@ import Cart from "./Cart/Cart.js";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCartVisibility } from "../store/cartSlice.js";
-import SliderComponent from "./SliderComponent.js";
+import SliderComponent from "../Component/Feature/SliderComponent.js";
 import SectionProduct from "./SectionProduct/SectionProduct.js";
 
 function Main() {

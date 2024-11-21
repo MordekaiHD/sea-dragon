@@ -1,5 +1,5 @@
 import React from "react";
-import ProductLayout from "../ProductLayout"; // Добавили импорт
+import ProductLayout from "../SectionProduct/ProductLayout"; // Добавили импорт
 import products from "../ProductJSON/ProductSushi.js";
 
 
@@ -12,7 +12,7 @@ function SectionProductSpicySushi({ handleAddToCart }) {
       <h1 className="product__title" id="sharp__sushi">
         Острые суши
         <img
-          src="/ImgSectionMenu/chilli-pepper.png"
+          src="/ImgSectionMenu/sharp__sushi/chilli-pepper.png"
           alt="chilli-pepper"
           className="product__title__img"
         />

@@ -15,7 +15,7 @@ function IconsCart({ onButtonClick }) {
       <button className="cart__icon__button" onClick={onButtonClick} aria-label="Открыть корзину">
         <img
           className="cart__icon__button__img"
-          src="/ImgSectionMenu/cart.svg"
+          src="/ImgSectionMenu/icon/cart.svg"
           alt={totalQuantity > 0 ? `Корзина с ${totalQuantity} товаром` : 'Корзина'}
         />
         {totalQuantity > 0 && (

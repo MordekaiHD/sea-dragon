@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../Style/SushiBarLocation/style.css';
+import '../../Style/SushiBarLocation/style.css';
 
 const SushiBarLocation = () => {
   useEffect(() => {

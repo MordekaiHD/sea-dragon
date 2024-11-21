@@ -132,7 +132,7 @@ function Cart() {
 
             {items.length === 0 ? (
               <p className="cart__order-empty">
-                КОРЗИНА ПУСТАЯ <img className="cart__order-empty-img" src="/ImgSectionMenu/cart.svg" alt="cart" />
+                КОРЗИНА ПУСТАЯ <img className="cart__order-empty-img" src="/ImgSectionMenu/icon/cart.svg" alt="cart" />
               </p>
             ) : (
               items.map((item) => (
@@ -147,17 +147,17 @@ function Cart() {
 
                   <div className="cart__order__product__quantity">
                     <button className="cart__order__product__quantity__button-decrease" onClick={() => onDecreaseQuantity(item.id)}>
-                      <img className="cart__order__product__quantity__button-count" src="/ImgSectionMenu/minusIcon.svg" alt="minus" />
+                      <img className="cart__order__product__quantity__button-count" src="/ImgSectionMenu/icon/minusIcon.svg" alt="minus" />
                     </button>
                     <span className="cart__order__product__quantity__button-style">{item.quantity}</span>
                     <button className="cart__order__product__quantity__button-increase" onClick={() => onIncreaseQuantity(item.id)}>
-                      <img className="cart__order__product__quantity__button-count" src="/ImgSectionMenu/plusIcon.svg" alt="plus" />
+                      <img className="cart__order__product__quantity__button-count" src="/ImgSectionMenu/icon/plusIcon.svg" alt="plus" />
                     </button>
                   </div>
 
                   <div className="cart__order__product__button">
                     <button className="cart__order__product__button-delete" onClick={() => dispatch(removeItem(item.id))}>
-                      <img className="cart__order__product__button-img" src="/ImgSectionMenu/deleteIcon.svg" alt="delete" />
+                      <img className="cart__order__product__button-img" src="/ImgSectionMenu/icon/deleteIcon.svg" alt="delete" />
                     </button>
                   </div>
                 </div>

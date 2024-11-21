@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../store/cartSlice'; // Импортируем действие для добавления товара
+import { addItem } from '../../store/cartSlice'; // Импортируем действие для добавления товара
 
 function ProductLayout({
   id,
