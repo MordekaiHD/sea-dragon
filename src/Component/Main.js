@@ -5,11 +5,9 @@ import Cart from "./Cart/Cart.js";
 
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, toggleCartVisibility } from "../store/cartSlice.js";
-import SectionProductSushi from "./SectionProduct/SectionProductSushi.js";
-import SectionProductSpicySushi from "./SectionProduct/SectionProductSpicySushi.js";
-import SectionProductBakedSushi from "./SectionProduct/SectionProductBakedSushi.js";
+import { toggleCartVisibility } from "../store/cartSlice.js";
 import SliderComponent from "./SliderComponent.js";
+import SectionProduct from "./SectionProduct/SectionProduct.js";
 
 
 function Main() {
@@ -17,31 +15,17 @@ function Main() {
   const cartItems = useSelector((state) => state.cart.items);
   const isCartVisible = useSelector((state) => state.cart.isVisible);
 
-  const handleAddToCart = (product) => {
-    dispatch(addItem(product)); // Добавление товара в корзину
-  };
-
   const handleButtonClick = () => {
     dispatch(toggleCartVisibility()); // Переключение видимости корзины
   };
 
   return (
     <main className="main">
-
       <SliderComponent />
-
       <MenuNav />
-
-      <SectionProductSushi handleAddToCart={handleAddToCart} />
-
-      <SectionProductSpicySushi handleAddToCart={handleAddToCart} />
-
-      <SectionProductBakedSushi handleAddToCart={handleAddToCart} />
-
+      <SectionProduct />
       <IconsCart onButtonClick={handleButtonClick} items={cartItems} />
-
       {isCartVisible && <Cart />}
-
     </main>
   );
 }

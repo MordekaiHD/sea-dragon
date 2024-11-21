@@ -251,13 +251,12 @@ p {
       box-shadow: 0 2px 8px rgba($primary-color, 0.3); // Слегка убираем свечение
     }
   }
-
 }
 
 .cart__icon {
   position: fixed;
-  top: 400px;
-  right: 10px;
+  top: 600px;
+  right: 15px;
   z-index: 1000;
   opacity: 0;
   transform: translateY(10px);
@@ -317,7 +316,7 @@ p {
 
   // Скролл
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 15px;
     /* Ширина полосы прокрутки */
   }
 

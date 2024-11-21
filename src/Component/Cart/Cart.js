@@ -151,7 +151,7 @@ function Cart() {
             />
 
             {items.length === 0 ? (
-              <p className='cart__order-empty'>КОРЗИНА ПУСТАЯ <img className="cart__order-empty-img" src='/ImgSectionMenu/cart.svg' /></p>
+              <p className='cart__order-empty'>КОРЗИНА ПУСТАЯ <img className="cart__order-empty-img" src='/ImgSectionMenu/cart.svg' alt='cart' /></p>
             ) : (
               items.map((item) => (
                 <div className="cart__order__product" key={item.id}>
@@ -172,7 +172,7 @@ function Cart() {
                       className="cart__order__product__quantity__button-decrease"
                       onClick={() => onDecreaseQuantity(item.id)}
                     >
-                      <img className='cart__order__product__quantity__button-count' src='/ImgSectionMenu/minusIcon2.svg' />
+                      <img className='cart__order__product__quantity__button-count' src='/ImgSectionMenu/minusIcon.svg' alt='button-plus' />
 
                     </button>
                     <span className="cart__order__product__quantity__button-style">
@@ -182,7 +182,7 @@ function Cart() {
                       className="cart__order__product__quantity__button-increase"
                       onClick={() => onIncreaseQuantity(item.id)}
                     >
-                      <img className='cart__order__product__quantity__button-count' src='/ImgSectionMenu/plusIcon.svg' />
+                      <img className='cart__order__product__quantity__button-count' src='/ImgSectionMenu/plusIcon.svg' alt='botton-minus' />
                     </button>
                   </div>
 
@@ -191,7 +191,7 @@ function Cart() {
                       className="cart__order__product__button-delete"
                       onClick={() => dispatch(removeItem(item.id))}
                     >
-                      <img className='cart__order__product__button-img' src='/ImgSectionMenu/deleteIcon2.svg' />
+                      <img className='cart__order__product__button-img' src='/ImgSectionMenu/deleteIcon.svg' alt='button-delete' />
 
                     </button>
                   </div>

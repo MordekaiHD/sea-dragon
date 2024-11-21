@@ -216,8 +216,8 @@ p {
 
 .cart__icon {
   position: fixed;
-  top: 400px;
-  right: 10px;
+  top: 600px;
+  right: 15px;
   z-index: 1000;
   opacity: 0;
   transform: translateY(10px);
@@ -270,7 +270,7 @@ p {
   /* Чтобы появилась полоса прокрутки, если контент не помещается */
 }
 .cart::-webkit-scrollbar {
-  width: 8px;
+  width: 15px;
   /* Ширина полосы прокрутки */
 }
 .cart::-webkit-scrollbar-thumb {

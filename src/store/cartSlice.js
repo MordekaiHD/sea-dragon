@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [], // Список товаров в корзине
-  isVisible: true, // Состояние видимости корзины (если нужно)
+  isVisible: false, // Состояние видимости корзины (если нужно)
 };
 
 const cartSlice = createSlice({
