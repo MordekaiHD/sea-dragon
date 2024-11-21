@@ -1,95 +1,62 @@
-import React, { useState, useEffect } from 'react';
-// import ScrollInfo from '../MenuNav/ScrollInfo.js';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function MenuNav() {
-
   const [activeSection, setActiveSection] = useState('');
 
-  // Функция для отслеживания прокрутки
-  const handleScroll = () => {
-    const sections = ['#sushi', '#sharp__sushi', '#baked__sushi', '#cold__rolls', '#baked__rolls', '#tempura', '#sets'];
-    let currentSection = '';
+  // Мемоизация массива секций
+  const sections = useMemo(() => [
+    { id: 'sushi', name: 'Суши' },
+    { id: 'sharp__sushi', name: 'Острые суши' },
+    { id: 'baked__sushi', name: 'Запечённые суши' },
+    { id: 'cold__rolls', name: 'Холодные роллы' },
+    { id: 'baked__rolls', name: 'Запечённые роллы' },
+    { id: 'tempura', name: 'Темпура' },
+    { id: 'sets', name: 'Сеты' },
+  ], []);
 
-    sections.forEach((section) => {
-      const element = document.querySelector(section);
-      if (element && window.scrollY >= element.offsetTop - 100) { // 100px до начала секции
-        currentSection = section;
-      }
-    });
-
-    setActiveSection(currentSection);
-  };
-
-  // Добавляем обработчик события прокрутки
+  // Добавляем debounce для оптимизации скролла
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentSection = sections.find((section) => {
+        const element = document.querySelector(`#${section.id}`);
+        return element && window.scrollY >= element.offsetTop - 100;
+      });
+      setActiveSection(currentSection ? currentSection.id : '');
+    };
+
+    const onScroll = () => requestAnimationFrame(handleScroll);
+    window.addEventListener('scroll', onScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [sections]);
 
   return (
     <>
-
       <nav className="menu__nav">
-        <a
-          href="#sushi"
-          className={`menu__link ${activeSection === '#sushi' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Суши</p>
-        </a>
-        <a
-          href="#sharp__sushi"
-          className={`menu__link ${activeSection === '#sharp__sushi' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Острые суши</p>
-        </a>
-        <a
-          href="#baked__sushi"
-          className={`menu__link ${activeSection === '#baked__sushi' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Запечённые суши</p>
-        </a>
-        <a
-          href="#cold__rolls"
-          className={`menu__link ${activeSection === '#cold__rolls' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Холодные роллы</p>
-        </a>
-        <a
-          href="#baked__rolls"
-          className={`menu__link ${activeSection === '#baked__rolls' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Запечённые роллы</p>
-        </a>
-        <a
-          href="#tempura"
-          className={`menu__link ${activeSection === '#tempura' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Темпура</p>
-        </a>
-        <a
-          href="#sets"
-          className={`menu__link ${activeSection === '#sets' ? 'active' : ''}`}
-        >
-          <p className="menu__text">Сеты</p>
-        </a>
+        {sections.map((section) => (
+          <a
+            key={section.id}
+            href={`#${section.id}`}
+            className={`menu__link ${activeSection === section.id ? 'active' : ''}`}
+            aria-current={activeSection === section.id ? 'page' : undefined}
+          >
+            <p className="menu__text">{section.name}</p>
+          </a>
+        ))}
       </nav>
       <nav className="menu__nav__info">
-        <a href="#" className="menu__nav__info__link">
-          <h2 className="menu__nav__info__text">Акции</h2>
-        </a>
-        <a href="#" className="menu__nav__info__link">
-          <h2 className="menu__nav__info__text">Доставка</h2>
-        </a>
-        <a href="#sushi" className="menu__nav__info__link">
-          <h2 className="menu__nav__info__text">О нас</h2>
-        </a>
+        {[
+          { href: '#', text: 'Акции' },
+          { href: '#', text: 'Доставка' },
+          { href: '#sushi', text: 'О нас' },
+        ].map((link, index) => (
+          <a key={index} href={link.href} className="menu__nav__info__link">
+            <h2 className="menu__nav__info__text">{link.text}</h2>
+          </a>
+        ))}
       </nav>
-
-      {/* <ScrollInfo/> */}
-
     </>
   );
 }

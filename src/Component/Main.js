@@ -3,20 +3,20 @@ import MenuNav from "./MenuNav/MenuNav.js";
 import IconsCart from "./Cart/IconsCart.js";
 import Cart from "./Cart/Cart.js";
 
-
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleCartVisibility } from "../store/cartSlice.js";
 import SliderComponent from "./SliderComponent.js";
 import SectionProduct from "./SectionProduct/SectionProduct.js";
 
-
 function Main() {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
-  const isCartVisible = useSelector((state) => state.cart.isVisible);
+
+  // Деструктурируем данные из состояния для удобства
+  const { items: cartItems, isVisible: isCartVisible } = useSelector((state) => state.cart);
 
   const handleButtonClick = () => {
-    dispatch(toggleCartVisibility()); // Переключение видимости корзины
+    // Переключение видимости корзины
+    dispatch(toggleCartVisibility());
   };
 
   return (
@@ -24,7 +24,11 @@ function Main() {
       <SliderComponent />
       <MenuNav />
       <SectionProduct />
-      <IconsCart onButtonClick={handleButtonClick} items={cartItems} />
+
+      {/* Отображаем иконку корзины только если есть товары */}
+      {cartItems.length > 0 && <IconsCart onButtonClick={handleButtonClick} items={cartItems} />}
+
+      {/* Отображаем корзину, если она видима */}
       {isCartVisible && <Cart />}
     </main>
   );

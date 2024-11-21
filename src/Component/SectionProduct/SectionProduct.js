@@ -1,25 +1,32 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../store/cartSlice.js";
+
+// Динамическая загрузка секций
 import SectionProductSushi from "../SectionProduct/SectionProductSushi.js";
 import SectionProductSpicySushi from "../SectionProduct/SectionProductSpicySushi.js";
 import SectionProductBakedSushi from "../SectionProduct/SectionProductBakedSushi.js";
-import { addItem } from "../../store/cartSlice.js";
-import { useDispatch } from 'react-redux';
-
 
 function SectionProduct() {
-  
   const dispatch = useDispatch();
+
+  // Обработчик добавления в корзину
   const handleAddToCart = (product) => {
-    dispatch(addItem(product)); // Добавление товара в корзину
+    dispatch(addItem(product));
   };
 
+  // Конфигурация секций
+  const sections = [
+    { id: "sushi", Component: SectionProductSushi },
+    { id: "spicySushi", Component: SectionProductSpicySushi },
+    { id: "bakedSushi", Component: SectionProductBakedSushi },
+  ];
+
   return (
-
     <>
-      <SectionProductSushi handleAddToCart={handleAddToCart} />
-
-      <SectionProductSpicySushi handleAddToCart={handleAddToCart} />
-
-      <SectionProductBakedSushi handleAddToCart={handleAddToCart} />
+      {sections.map(({ id, Component }) => (
+        <Component key={id} handleAddToCart={handleAddToCart} />
+      ))}
     </>
   );
 }
