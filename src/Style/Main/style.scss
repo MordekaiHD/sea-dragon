@@ -35,7 +35,6 @@ p {
   font-style: normal;
 }
 
-
 .header {
   display: flex;
   justify-items: center;
@@ -122,10 +121,10 @@ p {
       text-align: center;
       font-size: 24px;
     }
-  }
 
-  .menu__link.active .menu__text {
-    color: $primary-color;
+    &.active {
+      color: $primary-color;
+    }
   }
 
   &__info {

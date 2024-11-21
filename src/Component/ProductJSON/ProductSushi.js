@@ -4,7 +4,7 @@ const productsCatalog =
 
     {
       id: 1,
-      img: "/ImgSectionMenu/sishi/нигирь_с_угрём.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_угрём.svg",
       title: "Нигирь с угрём",
       text: "Нигирь с угрём, белым кунжутом и соусом наги.",
       weight: 30.5,
@@ -13,7 +13,7 @@ const productsCatalog =
     },
     {
       id: 2,
-      img: "/ImgSectionMenu/sishi/нигирь_с_креветкой.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_креветкой.svg",
       title: "Нигирь с креветкой",
       text: "Нигирь с креветкой.",
       weight: 30.5,
@@ -22,7 +22,7 @@ const productsCatalog =
     },
     {
       id: 3,
-      img: "/ImgSectionMenu/sishi/нигирь_с_чукой.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_чукой.svg",
       title: "Нигирь с чукой",
       text: "Нигирь с чукой и ореховым соусом.",
       weight: 30.5,
@@ -35,7 +35,7 @@ const productsCatalog =
 
     {
       id: 4,
-      img: "/ImgSectionMenu/sishi/нигирь_с_лососем.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_лососем.svg",
       title: "Нигирь с лососем",
       text: "Нигирь с лососем.",
       weight: 30.5,
@@ -44,7 +44,7 @@ const productsCatalog =
     },
     {
       id: 5,
-      img: "/ImgSectionMenu/sishi/нигирь_с_авакадо.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_авакадо.svg",
       title: "Нигирь с авакадо",
       text: "Нигирь с авакадо.",
       weight: 30.5,
@@ -53,7 +53,7 @@ const productsCatalog =
     },
     {
       id: 6,
-      img: "/ImgSectionMenu/sishi/нигирь_с_огурцом.svg",
+      img: "/ImgSectionMenu/sushi/нигирь_с_огурцом.svg",
       title: "Нигирь с огурцом",
       text: "Нигирь с огурцом и соусом спайси.",
       weight: 30.5,
@@ -118,6 +118,18 @@ const productsCatalog =
       price: '100',  // Убедитесь, что это строка с числовым значением
       quantity: 1
     }
+  ],
+
+  cold__sushi: [
+    {
+      id: 13,
+      img: "/ImgSectionMenu/sharp__sushi/с_лососем.png",
+      title: "С лососем",
+      text: "рис, нори, лосось, соус спайси",
+      weight: 30.5,
+      price: '100',  // Убедитесь, что это строка с числовым значением
+      quantity: 1
+    },
   ]
 };
 

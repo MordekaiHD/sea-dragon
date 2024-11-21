@@ -1,11 +1,7 @@
-import React from "react";
-import ProductLayout from "../SectionProduct/ProductLayout"; // Добавили импорт
+import ProductLayout from "../SectionProduct/ProductLayout";
 import products from "../ProductJSON/ProductSushi.js";
 
-
 function SectionProductSpicySushi({ handleAddToCart }) {
-
-  const spicySushi = products.spicy__sushi;
 
   return (
     <section className="section__product__spicy__sushi">
@@ -18,13 +14,17 @@ function SectionProductSpicySushi({ handleAddToCart }) {
         />
       </h1>
       <article className="product__article__sushi__spicy">
-        {spicySushi.map((product) => (
-          <ProductLayout
-            key={product.id}
-            {...product}
-            onAddToCart={handleAddToCart} // Передаем функцию
-          />
-        ))}
+        {products.spicy__sushi && products.spicy__sushi.length > 0 ? (
+          products.spicy__sushi.map((product) => (
+            <ProductLayout
+              key={product.id}
+              {...product}
+              onAddToCart={handleAddToCart}
+            />
+          ))
+        ) : (
+          <p className="empty-message">Нет доступных продуктов.</p>
+        )}
       </article>
     </section>
   );

@@ -105,7 +105,7 @@ p {
   text-align: center;
   font-size: 24px;
 }
-.menu__nav .menu__link.active .menu__text {
+.menu__nav .menu__link.active {
   color: #64bfff;
 }
 .menu__nav__info {

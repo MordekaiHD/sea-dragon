@@ -16,19 +16,30 @@ function MenuNav() {
 
   // Добавляем debounce для оптимизации скролла
   useEffect(() => {
-    const handleScroll = () => {
-      const currentSection = sections.find((section) => {
-        const element = document.querySelector(`#${section.id}`);
-        return element && window.scrollY >= element.offsetTop - 100;
-      });
-      setActiveSection(currentSection ? currentSection.id : '');
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5, // Срабатывает, если 50% элемента в зоне видимости
     };
 
-    const onScroll = () => requestAnimationFrame(handleScroll);
-    window.addEventListener('scroll', onScroll);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.querySelector(`#${section.id}`);
+      if (element) observer.observe(element);
+    });
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      sections.forEach((section) => {
+        const element = document.querySelector(`#${section.id}`);
+        if (element) observer.unobserve(element);
+      });
     };
   }, [sections]);
 
@@ -50,7 +61,7 @@ function MenuNav() {
         {[
           { href: '#', text: 'Акции' },
           { href: '#', text: 'Доставка' },
-          { href: '#sushi', text: 'О нас' },
+          { href: '#', text: 'О нас' },
         ].map((link, index) => (
           <a key={index} href={link.href} className="menu__nav__info__link">
             <h2 className="menu__nav__info__text">{link.text}</h2>
