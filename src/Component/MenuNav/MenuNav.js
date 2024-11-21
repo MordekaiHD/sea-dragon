@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import ScrollInfo from '../MenuNav/ScrollInfo.js';
 
 function MenuNav() {
 
@@ -30,6 +31,7 @@ function MenuNav() {
 
   return (
     <>
+
       <nav className="menu__nav">
         <a
           href="#sushi"
@@ -85,6 +87,9 @@ function MenuNav() {
           <h2 className="menu__nav__info__text">О нас</h2>
         </a>
       </nav>
+
+      {/* <ScrollInfo/> */}
+
     </>
   );
 }

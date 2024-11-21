@@ -10,9 +10,6 @@ import SectionProductSushi from "./SectionProduct/SectionProductSushi.js";
 import SectionProductSpicySushi from "./SectionProduct/SectionProductSpicySushi.js";
 import SectionProductBakedSushi from "./SectionProduct/SectionProductBakedSushi.js";
 import SliderComponent from "./SliderComponent.js";
-import ScrollInfo from "./ScrollInfo.js";
-
-
 
 
 function Main() {
@@ -34,8 +31,6 @@ function Main() {
       <SliderComponent />
 
       <MenuNav />
-
-      <ScrollInfo/>
 
       <SectionProductSushi handleAddToCart={handleAddToCart} />
 

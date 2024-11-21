@@ -2,6 +2,7 @@ $primary-color: #64bfff;
 $secondary-color: #ffffff;
 $background-color: #000000fa;
 $botton-color: #005c9b;
+$width-information-cart: 90%;
 $text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 $box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
 
@@ -156,19 +157,6 @@ p {
   }
 }
 
-.scroll__info {
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  background-color: #64bfff;
-  top: 0;
-
-  &__position {
-
-  }
-
-}
-
 .product__title {
   font-size: 50px;
   color: $secondary-color;
@@ -212,8 +200,6 @@ p {
     transform: scale(1.02);
     box-shadow: 0 0 10px 10px rgba($primary-color, 1);
   }
-
-
 
   &__img {
     width: 240px;
@@ -320,116 +306,271 @@ p {
 .cart {
   position: fixed;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.7);
+  // padding: 25px 0 25px 0px;
+  overflow-y: auto;
+  /* Чтобы появилась полоса прокрутки, если контент не помещается */
+
+  // Скролл
+  &::-webkit-scrollbar {
+    width: 8px;
+    /* Ширина полосы прокрутки */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $botton-color;
+    /* Цвет ползунка */
+    border-radius: 4px;
+    /* Закругление углов ползунка */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    /* Прозрачный фон для трека полосы прокрутки */
+  }
 
   &__info {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #fff;
     font-size: 22px;
-    max-height: 100vh;
-    overflow-y: auto;
     box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-    justify-content: center;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 4px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
+    padding: 25px 0 25px 0px;
   }
 
-  &__order-information {
+
+  &__title {
+    font-size: 40px;
+    margin-top: 10px;
+  }
+
+  &__order {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 16px;
-    gap: 30px;
-    width: 550px;
+    width: 580px;
+    background: #000018;
+    padding: 20px;
     box-shadow: $box-shadow;
-    background: #000014c7;
-    margin-top: 60px;
-  }
+    border-radius: 8px;
 
-  &__title {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-
-  &__product {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 450px;
-    gap: 10px; // Промежуток между элементами
-
-    &__img {
-      display: flex; // Центрируем изображение
-      justify-content: center;
+    &-empty {
+      display: flex;
+      gap: 20px;
+      font-family: "Exo 2", sans-serif;
+      font-size: 25px;
+      margin: 30px 0px 30px 0px;
+      flex-direction: column;
       align-items: center;
-      height: 100px; // Высота для изображения
-    }
 
-    &__img-style {
-      max-width: 100%; // Изображение подстраивается под контейнер
-      height: auto; // Сохраняем пропорции
-    }
-
-    &__text-style {
-      text-align: center; // Центрируем текст
-      font-size: 16px; // Размер шрифта
-    }
-
-    &__quantity {
-      display: flex; // Flexbox для кнопок и счётчика
-      justify-content: center; // Центрируем содержимое
-      align-items: center; // Вертикальное выравнивание
-      gap: 10px; // Расстояние между элементами
-
-      &__quantity-style {
-        font-size: 16px; // Стили для счётчика
-      }
-
-      &__button-decrease,
-      &__button-increase {
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
+      &-img {
+        width: 45px;
+        padding: 14px;
+        background: $secondary-color;
+        box-shadow: $box-shadow;
+        border-radius: 28px;
       }
     }
 
-    &__button {
-      text-align: center; // Центрируем кнопку удаления
+    &-information {
+      width: $width-information-cart;
+      display: flex;
+      flex-direction: column;
+    }
 
-      &-delete {
-        padding: 5px 15px;
-        background-color: red;
-        color: white;
+    &__product {
+      display: flex;
+      align-items: center;
+
+      &__img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+
+        &-style {
+          max-width: 100px;
+          height: auto;
+        }
+      }
+
+      &__text {
+        &-style {
+          text-align: center;
+          font-size: 21px;
+          width: 255px;
+        }
+      }
+
+      &__quantity {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        margin-right: 24px;
+
+
+        &__button-style {
+          font-size: 25px;
+        }
+
+        &__button-decrease,
+        &__button-increase {
+          box-shadow: $box-shadow;
+          border: none;
+          background: none;
+          border-radius: 15px;
+          font-size: 0px;
+          cursor: pointer;
+        }
+
+        &__button-count {
+          width: 20px;
+        }
+      }
+
+      &__button {
+        text-align: center;
+
+        &-delete {
+          display: flex;
+          border: none;
+          background: none;
+          cursor: pointer;
+        }
+
+        &-img {
+          width: 25px;
+          background: $secondary-color;
+          padding: 10px;
+          border-radius: 25px;
+
+          &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 10px 10px rgba(#9b0000, 1);
+          }
+        }
+      }
+    }
+
+    &-delivery {
+      display: flex;
+      flex-direction: column;
+      width: $width-information-cart;
+      margin-top: 30px;
+
+      select {
+        font-family: "Exo 2", sans-serif;
+        font-weight: bold;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-shadow: $box-shadow;
+      }
+
+      &-time {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+        width: $width-information-cart;
+
+        input[type='time'] {
+          font-family: "Exo 2", sans-serif;
+          font-weight: bold;
+          padding: 9px 10px;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-shadow: $box-shadow;
+        }
+
+        .error {
+          color: red;
+          font-size: 12px;
+        }
+      }
+    }
+
+    &-contact,
+    &-address,
+    &-comments,
+    &-coupon,
+    &-payment {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 30px;
+      width: $width-information-cart;
+
+
+      select,
+      input,
+      textarea {
+        font-family: "Exo 2", sans-serif;
+        font-weight: bold;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-shadow: $box-shadow;
+      }
+    }
+
+    &-amount {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      p {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+
+    &-submit {
+      margin-top: 30px;
+
+      &-button {
+        font-family: "Exo 2", sans-serif;
+        font-weight: bold;
+        padding: 20px 196px;
+        background-color: #ffffff;
+        color: #005c9b;
         border: none;
-        font-size: 14px;
+        font-weight: 800;
+        border-radius: 10px;
+        font-size: 22px;
         cursor: pointer;
+        transition: transform 0.5s ease, background-color 0.7s ease, box-shadow 0.5s ease, color 0.7s;
+
+        &:hover {
+          background-color: $botton-color; // Меняем цвет фона
+          color: $secondary-color; // Меняем цвет текста
+          box-shadow: $box-shadow; // Лёгкое свечение
+        }
+
+        // Анимация нажатия
+        &:active {
+          transform: scale(0.9); // Уменьшаем кнопку
+          box-shadow: $box-shadow; // Слегка убираем свечение
+        }
       }
     }
   }
 
-
-  &__order-amount {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
   }
-
 }
 
 .footer {

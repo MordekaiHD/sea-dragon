@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [], // Список товаров в корзине
+  isVisible: true, // Состояние видимости корзины (если нужно)
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-
     toggleCartVisibility(state) {
       state.isVisible = !state.isVisible;
     },
@@ -21,7 +21,6 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
-    
 
     removeItem: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
@@ -34,10 +33,14 @@ const cartSlice = createSlice({
         item.quantity += quantity; // Обновляем количество
       }
     },
+
+    clearCart: (state) => {
+      state.items = []; // Очистка корзины
+    },
   },
 });
 
-export const { toggleCartVisibility, addItem, removeItem, updateQuantity } = cartSlice.actions;
+export const { toggleCartVisibility, addItem, removeItem, updateQuantity, clearCart } = cartSlice.actions;
 
 // Селекторы
 export const selectCartItems = (state) => state.cart.items;
