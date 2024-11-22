@@ -17,7 +17,7 @@ function Cart() {
 
   // Локальное состояние для формы (объединено в один объект)
   const [formData, setFormData] = useState({
-    deliveryMethod: 'courier',
+    deliveryMethod: 'pickup',
     address: '',
     name: '',
     phone: '',
@@ -76,7 +76,7 @@ function Cart() {
 
   const resetForm = () => {
     setFormData({
-      deliveryMethod: 'courier',
+      deliveryMethod: 'pickup',
       address: '',
       name: '',
       phone: '',
@@ -171,21 +171,31 @@ function Cart() {
             <select name="deliveryMethod" value={formData.deliveryMethod} onChange={handleInputChange}>
               <option value="courier">Курьер</option>
               <option value="pickup">Самовывоз</option>
-              <option value="post">Почта</option>
             </select>
           </div>
 
           <div className="cart__order-delivery-time">
-            <h2>Выберите время доставки:</h2>
+            <h2>Время для предварительного заказа:</h2>
             <input type="time" name="deliveryTime" value={formData.deliveryTime} onChange={handleInputChange} />
             {errors.deliveryTime && <p className="error">{errors.deliveryTime}</p>}
           </div>
 
           <div className="cart__order-address">
-            <h2>Адрес доставки</h2>
-            <input type="text" name="address" placeholder="Введите адрес" value={formData.address} onChange={handleInputChange} />
+            {formData.deliveryMethod === 'courier' && (
+              <>
+                <h2>Адрес доставки</h2>
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Введите адрес"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
+              </>
+            )}
             {errors.address && <p className="error">{errors.address}</p>}
           </div>
+
 
           <div className="cart__order-contact">
             <h2>Контактные данные</h2>

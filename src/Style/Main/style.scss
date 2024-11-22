@@ -31,7 +31,7 @@ h1 {
 p {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 800;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -119,7 +119,7 @@ p {
 
     .menu__text {
       text-align: center;
-      font-size: 24px;
+      font-size: 22px;
     }
 
     &.active {
@@ -129,23 +129,23 @@ p {
 
   &__info {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 72px;
-    text-shadow: $text-shadow;
-    border: solid 1px $primary-color;
-    box-shadow: $box-shadow;
+    text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+    border: solid 1px #64bfff;
+    box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
     border-radius: 10px;
-    padding: 15px 6px;
-    margin-left: 460px;
-    width: 500px;
+    padding: 20px 6px;
+    margin-left: 530px;
+    width: 400px;
     z-index: 1;
-    background: rgb(0 0 0 / 90%);
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
 
 
     &__link {
       font-family: "Inter", sans-serif;
-      font-size: 17px;
+      font-size: 22px;
       text-shadow: $text-shadow;
       border: none;
       background: none;
@@ -158,48 +158,77 @@ p {
       }
     }
   }
-}
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: $secondary-color;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 
-.modal__content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-  z-index: 1001;
-}
+    &-li {
+      margin-left: 30px;
+    }
 
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 20px;
-  cursor: pointer;
-}
+    &-img {
+      width: 50px;
+    }
 
-.modal__backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+    &-media {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-position {
+      display: flex;
+      padding: 10px;
+      gap: 30px;
+    }
+
+    &-content {
+      gap: 15px;
+      display: flex;
+      background: #000018;
+      box-shadow: $box-shadow;
+      padding: 20px 38px;
+      border-radius: 8px;
+      max-width: 710px;
+      position: relative;
+      z-index: 1001;
+      flex-direction: column;
+    }
+
+    &-text {
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    &-close {
+      position: absolute;
+      top: 7px;
+      right: 20px;
+      border: none;
+      background: none;
+      font-size: 50px;
+      cursor: pointer;
+      color: $secondary-color;
+    }
+
+    &-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+  }
 }
 
 
@@ -356,7 +385,6 @@ p {
   height: 100%;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.7);
-  // padding: 25px 0 25px 0px;
   overflow-y: auto;
   /* Чтобы появилась полоса прокрутки, если контент не помещается */
 
@@ -376,6 +404,12 @@ p {
   &::-webkit-scrollbar-track {
     background: transparent;
     /* Прозрачный фон для трека полосы прокрутки */
+  }
+
+  &__divider {
+    border: solid 2px;
+    margin: 10px 0px;
+    box-shadow: $box-shadow;
   }
 
   &__info {
@@ -624,10 +658,10 @@ p {
   align-items: center;
   margin-bottom: 50px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 
   &__logo {
-    margin-right: 390px;
+    margin-right: 250px;
 
     &__link {
       display: flex;
@@ -636,18 +670,22 @@ p {
       flex-wrap: wrap;
       text-decoration: none;
       color: rgba(255, 255, 255, 0.8196078431);
-      padding-bottom: 35px;
       border-radius: 15px;
     }
 
     &__img {
-      max-width: 60px;
+      max-width: 100px;
       padding-right: 25px;
     }
 
     &__title {
       text-align: center;
       text-shadow: $text-shadow;
+      font-size: 40px;
+    }
+
+    &__text {
+      font-size: 24px;
     }
   }
 
@@ -660,19 +698,7 @@ p {
     color: rgba(255, 255, 255, 0.8196078431);
     text-shadow: $text-shadow;
 
-    &__info {
-      display: grid;
-      gap: 10px;
 
-      &-text {
-        text-decoration: none;
-        color: $secondary-color;
-
-        &:hover {
-          color: $primary-color;
-        }
-      }
-    }
 
     &__order {
       display: grid;
@@ -680,9 +706,14 @@ p {
       justify-items: center;
       gap: 10px;
 
+      &-title {
+        font-size: 24px;
+      }
+
       &-tel {
         text-decoration: none;
         color: $secondary-color;
+        font-size: 20px;
 
         &:hover {
           color: $primary-color;
@@ -694,8 +725,13 @@ p {
       display: grid;
       gap: 10px;
 
+      &-title {
+        font-size: 24px;
+      }
+
       &-text {
         color: #fff;
+        font-size: 20px;
       }
     }
   }

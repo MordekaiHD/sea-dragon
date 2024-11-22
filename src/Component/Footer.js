@@ -19,12 +19,6 @@ function Footer() {
       </section>
 
       <nav className="footer__nav">
-        <article className="footer__nav__info">
-          <h1 className="footer__nav__info-tittle">Навигация</h1>
-          <Link to="/" className="footer__nav__info-text">Главная</Link>
-          <Link to="/delivery" className="footer__nav__info-text">Доставка</Link>
-          <Link to="/about" className="footer__nav__info-text">О нас</Link>
-        </article>
         <article className="footer__nav__order">
           <h1 className="footer__nav__order-title">Оформить заказ</h1>
           <a href="tel:+375339029342" className="footer__nav__order-tel">+375 (33) 902-93-42</a>

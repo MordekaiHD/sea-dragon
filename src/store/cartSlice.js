@@ -44,7 +44,9 @@ export const { toggleCartVisibility, addItem, removeItem, updateQuantity, clearC
 
 // Селекторы
 export const selectCartItems = (state) => state.cart.items;
-export const selectTotalAmount = (state) =>
-  state.cart.items.reduce((total, item) => total + item.price * item.quantity, 0);
+export const selectTotalAmount = (state) => {
+  const totalAmount = state.cart.items.reduce((total, item) => total + item.price * item.quantity, 0);
+  return totalAmount;
+};
 
 export default cartSlice.reducer;
