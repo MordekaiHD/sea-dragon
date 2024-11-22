@@ -258,42 +258,46 @@ p {
     grid-template-columns: repeat(3, 270px);
     justify-content: center;
     gap: 50px;
-    margin: 20px;
+    margin-top: 50px;
   }
 }
 
 .product__sushi {
   position: relative;
   display: grid;
-  gap: 10px;
   background-color: #ffffffb3;
   border-radius: 15px;
   padding: 15px;
-  transition: transform 0.4s;
+  transition: box-shadow 0.3s;
 
   &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 10px 10px rgba($primary-color, 1);
+    box-shadow: $box-shadow;
   }
 
   &__img {
     width: 240px;
-    height: 220px;
+    height: 175px;
   }
 
   &__title {
-    font-size: 24px;
+    font-size: 23px;
+    padding: 15px 0 0 5px;
+  }
+
+  &__weight {
+    padding: 15px 0 0 5px;
   }
 
   &__text {
     min-height: 47px;
     font-size: 16px;
     color: #000000ba;
+    padding: 10px 0 0 5px;
   }
 
   &__price {
-    font-size: 23px;
-    padding: 5px;
+    font-size: 25px;
+    padding: 10px 0 0 5px;
   }
 
   &__button {
@@ -307,6 +311,7 @@ p {
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 15px;
     transition: transform 0.5s ease, background-color 0.7s ease, box-shadow 0.5s ease, color 0.7s;
 
     display: flex;
@@ -438,6 +443,13 @@ p {
     padding: 20px;
     box-shadow: $box-shadow;
     border-radius: 8px;
+
+    &-sticks {
+      display: flex;
+      gap: 40px;
+      font-size: 20px;
+      align-items: baseline;
+    }
 
     &-empty {
       display: flex;
@@ -701,10 +713,16 @@ p {
 
 
     &__order {
-      display: grid;
+      display: flex;
       align-items: center;
       justify-items: center;
-      gap: 10px;
+      gap: 20px;
+      flex-direction: column;
+
+      &-info {
+        display: flex;
+        gap: 20px;
+      }
 
       &-title {
         font-size: 24px;

@@ -222,37 +222,40 @@ p {
   grid-template-columns: repeat(3, 270px);
   justify-content: center;
   gap: 50px;
-  margin: 20px;
+  margin-top: 50px;
 }
 
 .product__sushi {
   position: relative;
   display: grid;
-  gap: 10px;
   background-color: rgba(255, 255, 255, 0.7019607843);
   border-radius: 15px;
   padding: 15px;
-  transition: transform 0.4s;
+  transition: box-shadow 0.3s;
 }
 .product__sushi:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 10px 10px #64bfff;
+  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
 }
 .product__sushi__img {
   width: 240px;
-  height: 220px;
+  height: 175px;
 }
 .product__sushi__title {
-  font-size: 24px;
+  font-size: 23px;
+  padding: 15px 0 0 5px;
+}
+.product__sushi__weight {
+  padding: 15px 0 0 5px;
 }
 .product__sushi__text {
   min-height: 47px;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.7294117647);
+  padding: 10px 0 0 5px;
 }
 .product__sushi__price {
-  font-size: 23px;
-  padding: 5px;
+  font-size: 25px;
+  padding: 10px 0 0 5px;
 }
 .product__sushi__button {
   font-family: "Exo 2", sans-serif;
@@ -265,6 +268,7 @@ p {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 15px;
   transition: transform 0.5s ease, background-color 0.7s ease, box-shadow 0.5s ease, color 0.7s;
   display: flex;
   align-items: center;
@@ -377,6 +381,12 @@ p {
   padding: 20px;
   box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
   border-radius: 8px;
+}
+.cart__order-sticks {
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+  align-items: baseline;
 }
 .cart__order-empty {
   display: flex;
@@ -601,10 +611,15 @@ p {
   text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 }
 .footer__nav__order {
-  display: grid;
+  display: flex;
   align-items: center;
   justify-items: center;
-  gap: 10px;
+  gap: 20px;
+  flex-direction: column;
+}
+.footer__nav__order-info {
+  display: flex;
+  gap: 20px;
 }
 .footer__nav__order-title {
   font-size: 24px;

@@ -5,13 +5,16 @@ import {
   updateQuantity,
   selectCartItems,
   selectTotalAmount,
+  updateDeliveryMethod,
   clearCart,
+  applyPromoCode,
 } from '../../store/cartSlice';
 
 function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
-  const totalAmount = useSelector(selectTotalAmount);
+  const [quantity, setQuantity] = useState(0); // По умолчанию 1 палочка
+  const { totalAmount, deliveryCost, totalWithDelivery } = useSelector(selectTotalAmount);
   const [isVisible, setIsVisible] = useState(true);
   const cartRef = useRef(null);
 
@@ -25,6 +28,8 @@ function Cart() {
     coupon: '',
     paymentMethod: 'card',
     deliveryTime: '',
+    sticks: false, // По умолчанию палочки не выбраны
+    sticksQuantity: quantity,
   });
 
   const [errors, setErrors] = useState({
@@ -36,11 +41,28 @@ function Cart() {
 
   // Обработчик изменения полей формы
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
+
+    if (name === 'deliveryMethod') {
+      dispatch(updateDeliveryMethod(value));
+    }
+
+    if (name === 'coupon') {
+      dispatch(applyPromoCode(value)); // Применяем промокод
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => (prev > 0 ? prev - 1 : 0)); // Минимум 1
   };
 
   // Валидация формы
@@ -61,10 +83,11 @@ function Cart() {
       setErrors(validationErrors);
       return;
     }
-
     const orderData = {
       items,
       totalAmount,
+      deliveryCost,
+      totalWithDelivery,
       ...formData,
     };
 
@@ -166,6 +189,38 @@ function Cart() {
             <hr className="cart__divider" />
           </div>
 
+          <div className="cart__order-sticks">
+          <p>Сколько нужно палочек?</p>
+
+            <div className="cart__order__product__quantity">
+              <button
+                className="cart__order__product__quantity__button-decrease"
+                onClick={decreaseQuantity}
+              >
+                <img
+                  className="cart__order__product__quantity__button-count"
+                  src="/ImgSectionMenu/icon/minusIcon.svg"
+                  alt="minus"
+                />
+              </button>
+              <span className="cart__order__product__quantity__button-style">
+                {quantity}
+              </span>
+              <button
+                className="cart__order__product__quantity__button-increase"
+                onClick={increaseQuantity}
+              >
+                <img
+                  className="cart__order__product__quantity__button-count"
+                  src="/ImgSectionMenu/icon/plusIcon.svg"
+                  alt="plus"
+                />
+              </button>
+            </div>
+
+
+          </div>
+
           <div className="cart__order-delivery">
             <h2>Выберите способ доставки:</h2>
             <select name="deliveryMethod" value={formData.deliveryMethod} onChange={handleInputChange}>
@@ -220,12 +275,13 @@ function Cart() {
             <select name="paymentMethod" value={formData.paymentMethod} onChange={handleInputChange}>
               <option value="card">Банковская карта</option>
               <option value="cash">Наличные</option>
-              <option value="paypal">PayPal</option>
             </select>
           </div>
 
           <div className="cart__order-amount">
-            <p>Общая сумма: {totalAmount} руб.</p>
+            <p>Сумма заказа: {totalAmount} руб.</p>
+            <p>Сумма доставки: {deliveryCost} руб.</p>
+            <p>Общая сумма: {totalWithDelivery} руб.</p>
           </div>
 
           <div className="cart__order-submit">
