@@ -1,5 +1,5 @@
 .slider-container {
-  width: 93vw;
+  width: 94vw;
   height: 400px;
   border-radius: 20px;
   overflow: hidden;
@@ -35,9 +35,16 @@
   right: 10px;
 }
 .slider-container .slick-dots li button:before {
-  color: #888;
-  font-size: 12px;
+  color: #ffffff;
+  font-size: 15px;
 }
 .slider-container .slick-dots li.slick-active button:before {
-  color: #555;
+  color: #005c9b;
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+}
+
+@media (max-width: 1024px) {
+  .slider-container {
+    margin-left: 24px;
+  }
 }/*# sourceMappingURL=Slider.css.map */

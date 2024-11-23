@@ -1,9 +1,15 @@
 .map {
-  width: calc(100vw - 40px);
+  width: 100vw;
   height: 400px;
   border-radius: 20px;
   margin: 100px 40px;
   overflow: hidden;
   box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
   filter: brightness(85%);
+}
+
+@media (max-width: 1024px) {
+  .map {
+    width: 90vw;
+  }
 }/*# sourceMappingURL=style.css.map */

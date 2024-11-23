@@ -79,8 +79,18 @@ function MenuNav() {
                 <p className="menu__nav__modal-text">Суши-бар "Морской дракон" предлагает быструю и удобную доставку вашего заказа!</p>
                 <h1>Как оформить заказ:</h1>
                 <ul>
-                  <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">На сайте Название сайта.</p></li>
+                  <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">На сайте "Морской дракон"</p></li>
                   <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">По телефону +375 (XX) XXX-XX-XX.</p></li>
+                  <li className='menu__nav__modal-li'>
+                    <div className="menu__nav__modal-text menu__nav__modal-media">
+                      В Instagram или нашем приложении:
+                      <div className='menu__nav__modal-position'>
+                        <a href="https://www.instagram.com/morskoy_drakon2023?igsh=MTdhbnYxcXA0ZGF3ZQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer"><img src='/ImgSectionMenu/icon/instagram.svg' alt='instagram' className="menu__nav__modal-img" /></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.foodpicasso.morskoydrakon&pcampaignid=web_share" target="_blank" rel="noopener noreferrer"><img src='/ImgSectionMenu/icon/google-play.svg' alt='annex' className="menu__nav__modal-img" /></a>
+                        <a href="https://apps.apple.com/by/app/%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%BE%D0%B9-%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD-%D0%BA%D0%B0%D0%BB%D0%B8%D0%BD%D0%BA%D0%BE%D0%B2%D0%B8%D1%87%D0%B8/id6478165944" target="_blank" rel="noopener noreferrer"><img src='/ImgSectionMenu/icon/app-store.svg' alt='annex' className="menu__nav__modal-img" /></a>
+                      </div>
+                    </div>
+                  </li>
                 </ul>
                 <h1>Время доставки:</h1>
                 <ul>
@@ -107,8 +117,8 @@ function MenuNav() {
               <h1>Контакты</h1>
               <p className="menu__nav__modal-text">Мы всегда рады вашим звонкам и заказам! Если у вас есть вопросы, пожелания или вы хотите оформить заказ, свяжитесь с нами удобным для вас способом:</p>
               <ul>
-                <li className='menu__nav__modal-li'><strong className="menu__nav__modal-text">Телефон:</strong> +375 (XX) XXX-XX-XX</li>
-                <li className='menu__nav__modal-li'><strong className="menu__nav__modal-text">Адрес:</strong> г. Мозырь, ул. Примерная, 10</li>
+                <li className='menu__nav__modal-li '><p className="menu__nav__modal-text">Телефон: +375 (XX) XXX-XX-XX</p> </li>
+                <li className='menu__nav__modal-li'><p className="menu__nav__modal-text">Адрес: г. Мозырь, ул. Примерная, 10</p> </li>
               </ul>
               <h1>Часы работы:</h1>
               <ul>

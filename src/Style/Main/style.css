@@ -119,7 +119,6 @@ p {
   padding: 20px 6px;
   margin-left: 530px;
   width: 400px;
-  z-index: 1;
   background: rgba(0, 0, 0, 0.9);
   justify-content: center;
 }
@@ -164,11 +163,11 @@ p {
   gap: 30px;
 }
 .menu__nav__modal-content {
-  gap: 15px;
+  gap: 13px;
   display: flex;
   background: #000018;
   box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
-  padding: 20px 38px;
+  padding: 14px 38px;
   border-radius: 8px;
   max-width: 710px;
   position: relative;
@@ -188,6 +187,9 @@ p {
   font-size: 50px;
   cursor: pointer;
   color: #ffffff;
+}
+.menu__nav__modal-close:hover {
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 }
 .menu__nav__modal-backdrop {
   position: fixed;
@@ -217,7 +219,7 @@ p {
   gap: 20px;
   margin: 20px;
 }
-.product__article__sushi, .product__article__sushi__spicy, .product__article__sushi__baked {
+.product__article__sushi, .product__article__sushi__spicy, .product__article__sushi__baked, .product__article__cold__rolls, .product__article__baked__rolls, .product__article__tempura, .product__article__sets {
   display: grid;
   grid-template-columns: repeat(3, 270px);
   justify-content: center;
@@ -238,7 +240,7 @@ p {
 }
 .product__sushi__img {
   width: 240px;
-  height: 175px;
+  height: 200px;
 }
 .product__sushi__title {
   font-size: 23px;
@@ -249,13 +251,15 @@ p {
 }
 .product__sushi__text {
   min-height: 47px;
-  font-size: 16px;
+  font-size: 15px;
   color: rgba(0, 0, 0, 0.7294117647);
   padding: 10px 0 0 5px;
 }
 .product__sushi__price {
+  color: #ffffff;
   font-size: 25px;
   padding: 10px 0 0 5px;
+  text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 }
 .product__sushi__button {
   font-family: "Exo 2", sans-serif;
@@ -642,4 +646,107 @@ p {
 .footer__nav__workingTime-text {
   color: #fff;
   font-size: 20px;
+}
+
+@media (max-width: 1024px) {
+  .header__logo__link {
+    margin-right: 0;
+  }
+  .menu__nav {
+    gap: 24px;
+  }
+  .menu__nav__info {
+    margin-left: 320px;
+  }
+  .menu__nav__modal-content {
+    font-size: 10px;
+    padding: 26px 55px;
+  }
+  .product__title {
+    padding-top: 150px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .product__article__sushi,
+  .product__article__sushi__spicy,
+  .product__article__sushi__baked,
+  .product__article__cold__rolls,
+  .product__article__baked__rolls,
+  .product__article__tempura,
+  .product__article__sets {
+    justify-content: center;
+    gap: 20px;
+    margin-top: 61px;
+  }
+  .cart__icon {
+    top: 520px;
+  }
+  .footer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer__logo {
+    margin-right: 0px;
+  }
+  .footer__nav {
+    gap: 80px;
+  }
+}
+@media (max-width: 768px) {
+  .header__logo__img {
+    max-width: 210px;
+  }
+  .menu__nav {
+    margin: 70px 30px 20px 45px;
+  }
+  .menu__nav__info {
+    margin-left: 195px;
+  }
+  .menu__nav__modal-content {
+    padding: 24px 30px;
+  }
+  .product__article__sushi,
+  .product__article__sushi__spicy,
+  .product__article__sushi__baked,
+  .product__article__cold__rolls,
+  .product__article__baked__rolls,
+  .product__article__tempura,
+  .product__article__sets {
+    grid-template-columns: repeat(2, 270px);
+  }
+}
+@media (max-width: 480px) {
+  .header__logo__link {
+    gap: 0;
+  }
+  .header__logo__img {
+    max-width: 100px;
+  }
+  .header__title {
+    font-size: 50px;
+  }
+  .menu__nav {
+    margin: 40px 0px 20px 25px;
+    position: static;
+  }
+  .menu__nav__info {
+    margin-left: 20px;
+  }
+  .product__title {
+    padding-top: 90px;
+    margin-left: 26px;
+    font-size: 30px;
+  }
+  .product__article__sushi,
+  .product__article__sushi__spicy,
+  .product__article__sushi__baked,
+  .product__article__cold__rolls,
+  .product__article__baked__rolls,
+  .product__article__tempura,
+  .product__article__sets {
+    grid-template-columns: repeat(1, 270px);
+    margin-top: 40px;
+  }
 }/*# sourceMappingURL=style.css.map */

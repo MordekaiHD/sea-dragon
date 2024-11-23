@@ -47,7 +47,7 @@ const SushiBarLocation = () => {
     };
   }, []);
 
-  return <div className="map" id="map" style={{ width: '100vw', height: '400px' }} />;
+  return <div className="map" id="map" style={{height: '400px' }} />;
 };
 
 export default SushiBarLocation;

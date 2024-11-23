@@ -13,7 +13,7 @@ import {
 function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
-  const [quantity, setQuantity] = useState(0); // По умолчанию 1 палочка
+  const [quantity, setQuantity] = useState(1); // По умолчанию 1 палочка
   const { totalAmount, deliveryCost, totalWithDelivery } = useSelector(selectTotalAmount);
   const [isVisible, setIsVisible] = useState(true);
   const cartRef = useRef(null);

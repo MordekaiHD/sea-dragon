@@ -64,9 +64,9 @@ const cartSlice = createSlice({
       const promoCode = action.payload;
       state.promoCode = promoCode;
 
-      if (promoCode === 'DISCOUNT10') {
+      if (promoCode === 'MORSKOY') {
         state.discount = 0.1; // 10% скидка
-      } else if (promoCode === 'DISCOUNT20') {
+      } else if (promoCode === 'MORSKOY20') {
         state.discount = 0.2; // 20% скидка
       } else {
         state.discount = 0;

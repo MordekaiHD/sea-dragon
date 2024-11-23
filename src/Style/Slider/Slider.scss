@@ -1,15 +1,19 @@
 $arrow-size: 50px; // Размер стрелок
 $arrow-color: rgba(255, 255, 255, 0.8); // Цвет фона стрелок
 $arrow-hover-color: rgba(255, 255, 255, 1); // Цвет при наведении
+$box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+$text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+$botton-color: #005c9b;
+$secondary-color: #ffffff;
 
 .slider-container {
-  width: 93vw;
+  width: 94vw;
   height: 400px;
   border-radius: 20px;
   overflow: hidden;
   position: relative; // Для размещения стрелок поверх
   margin-left: 40px;
-  box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+  box-shadow: $box-shadow;
 
   .img__slider {
     width: 100%; // Используем всю ширину контейнера
@@ -32,7 +36,7 @@ $arrow-hover-color: rgba(255, 255, 255, 1); // Цвет при наведени�
     transition: box-shadow 0.3s ease;
 
     &:hover {
-      box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb; // При наведении
+      box-shadow: $box-shadow; // При наведении
     }
 
     &.slick-prev {
@@ -49,14 +53,21 @@ $arrow-hover-color: rgba(255, 255, 255, 1); // Цвет при наведени�
     li {
       button {
         &:before {
-          color: #888; // Цвет точек
-          font-size: 12px; // Размер точек
+          color: $secondary-color; // Цвет точек
+          font-size: 15px; // Размер точек
         }
       }
 
       &.slick-active button:before {
-        color: #555; // Цвет активной точки
+        color: $botton-color; // Цвет активной точки
+        text-shadow: $text-shadow;
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .slider-container {
+    margin-left: 24px;
   }
 }
