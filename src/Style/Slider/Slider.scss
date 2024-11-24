@@ -6,18 +6,21 @@ $text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
 $botton-color: #005c9b;
 $secondary-color: #ffffff;
 
+.slider-container-box {
+  display: flex;
+  justify-content: center;
+}
+
 .slider-container {
   width: 94vw;
-  height: 400px;
+  height: 343px;
   border-radius: 20px;
   overflow: hidden;
   position: relative; // Для размещения стрелок поверх
-  margin-left: 40px;
   box-shadow: $box-shadow;
 
   .img__slider {
     width: 100%; // Используем всю ширину контейнера
-    height: 400px; // Высота слайдов
     border-radius: 20px; // Скругленные углы
   }
 
@@ -68,6 +71,49 @@ $secondary-color: #ffffff;
 
 @media (max-width: 1024px) {
   .slider-container {
-    margin-left: 24px;
+    height: 250px;
+
+    .img__slider {
+      height: 250px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    height: 250px;
+
+    .img__slider {
+      height: 250px;
+    }
+  }
+
+  .slider-container .slick-arrow.slick-next {
+    right: 0px;
+  }
+
+  .slider-container .slick-arrow.slick-prev {
+    left: 0px;
+  }
+}
+
+@media (max-width: 426px) {
+  .slider-container {
+    height: 150px;
+
+    .img__slider {
+      height: 150px;
+    }
+  }
+}
+
+@media (max-width: 376px) {
+
+  .slider-container .slick-arrow.slick-next {
+    right: -10px;
+  }
+
+  .slider-container .slick-arrow.slick-prev {
+    left: -10px;
   }
 }

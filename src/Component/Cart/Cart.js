@@ -124,6 +124,12 @@ function Cart() {
     }
   };
 
+
+  // Функция для закрытия модального окна
+  const closeModal = () => {
+    setIsVisible(false);
+  };
+
   // Закрытие корзины при клике вне нее
   const handleClickOutside = (event) => {
     if (cartRef.current && !cartRef.current.contains(event.target)) {
@@ -190,7 +196,7 @@ function Cart() {
           </div>
 
           <div className="cart__order-sticks">
-          <p>Сколько нужно палочек?</p>
+            <p>Сколько нужно палочек?</p>
 
             <div className="cart__order__product__quantity">
               <button
@@ -223,7 +229,7 @@ function Cart() {
 
           <div className="cart__order-delivery">
             <h2>Выберите способ доставки:</h2>
-            <select name="deliveryMethod" value={formData.deliveryMethod} onChange={handleInputChange}>
+            <select name="deliveryMethod" className='cart__order-select' value={formData.deliveryMethod} onChange={handleInputChange}>
               <option value="courier">Курьер</option>
               <option value="pickup">Самовывоз</option>
             </select>
@@ -231,7 +237,7 @@ function Cart() {
 
           <div className="cart__order-delivery-time">
             <h2>Время для предварительного заказа:</h2>
-            <input type="time" name="deliveryTime" value={formData.deliveryTime} onChange={handleInputChange} />
+            <input type="time" name="deliveryTime" className='cart__order-select' value={formData.deliveryTime} onChange={handleInputChange} />
             {errors.deliveryTime && <p className="error">{errors.deliveryTime}</p>}
           </div>
 
@@ -250,7 +256,6 @@ function Cart() {
             )}
             {errors.address && <p className="error">{errors.address}</p>}
           </div>
-
 
           <div className="cart__order-contact">
             <h2>Контактные данные</h2>
@@ -272,7 +277,7 @@ function Cart() {
 
           <div className="cart__order-payment">
             <h2>Выберите способ оплаты:</h2>
-            <select name="paymentMethod" value={formData.paymentMethod} onChange={handleInputChange}>
+            <select name="paymentMethod" className='cart__order-select' value={formData.paymentMethod} onChange={handleInputChange}>
               <option value="card">Банковская карта</option>
               <option value="cash">Наличные</option>
             </select>
@@ -287,6 +292,8 @@ function Cart() {
           <div className="cart__order-submit">
             <button className="cart__order-submit-button" onClick={handleSubmit}>ЗАКАЗАТЬ</button>
           </div>
+
+          <button className="cart__order-close" onClick={closeModal}>×</button>
         </div>
       </div>
     </div>

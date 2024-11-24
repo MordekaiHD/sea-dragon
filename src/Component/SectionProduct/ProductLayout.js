@@ -27,12 +27,14 @@ function ProductLayout({
       <p className="product__sushi__weight">{weight} гр.</p>
       <p className="product__sushi__text">{text}</p>
       <p className="product__sushi__price">{price} руб.</p>
-      <button
-        className="product__sushi__button"
-        onClick={handleAddToCart}
-      >
-        Добавить в корзину
-      </button>
+      <div className='product__sushi-box'>
+        <button
+          className="product__sushi__button"
+          onClick={handleAddToCart}
+        >
+          Добавить в корзину
+        </button>
+      </div>
     </div>
   );
 }

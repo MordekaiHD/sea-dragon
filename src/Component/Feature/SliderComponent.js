@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const SliderComponent = () => {
   const settings = {
-    dots: true, // Показывать навигационные точки
+    dots: false, // Показывать навигационные точки
     infinite: true, // Бесконечная прокрутка
     speed: 500, // Скорость анимации (в мс)
     slidesToShow: 1, // Сколько слайдов показывать
@@ -17,37 +17,39 @@ const SliderComponent = () => {
   };
 
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        <div>
-          <img
-            className="img__slider"
-            src="/ImgSlider/Sale1.png"
-            alt="Slide 1"
-          />
-        </div>
-        <div>
-          <img
-            className="img__slider"
-            src="/ImgSlider/Sale2.png"
-            alt="Slide 2"
-          />
-        </div>
-        <div>
-          <img
-            className="img__slider"
-            src="/ImgSlider/Sale3.png"
-            alt="Slide 3"
-          />
-        </div>
-        <div>
-          <img
-            className="img__slider"
-            src="/ImgSlider/Sale4.png"
-            alt="Slide 4"
-          />
-        </div>
-      </Slider>
+    <div className='slider-container-box'>
+      <div className="slider-container">
+        <Slider {...settings}>
+          <div>
+            <img
+              className="img__slider"
+              src="/ImgSlider/Sale1.png"
+              alt="Slide 1"
+            />
+          </div>
+          <div>
+            <img
+              className="img__slider"
+              src="/ImgSlider/Sale2.png"
+              alt="Slide 2"
+            />
+          </div>
+          <div>
+            <img
+              className="img__slider"
+              src="/ImgSlider/Sale3.png"
+              alt="Slide 3"
+            />
+          </div>
+          <div>
+            <img
+              className="img__slider"
+              src="/ImgSlider/Sale4.png"
+              alt="Slide 4"
+            />
+          </div>
+        </Slider>
+      </div>
     </div>
   );
 };
