@@ -7,15 +7,15 @@ const initialState = {
   deliveryCost: 0,
   totalAmount: 0,
   totalWithDelivery: 0,
-  promoCode: '', // Промокод
-  discount: 0, // Скидка
+  promoCode: '',
+  discount: 0,
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    toggleCartVisibility(state) {
+    toggleCartVisibility: (state) => {
       state.isVisible = !state.isVisible;
     },
 
@@ -26,7 +26,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
-      updateTotals(state);
+      updateTotals(state); // Обновление итогов после изменения количества товаров
     },
 
     removeItem(state, action) {
@@ -57,7 +57,7 @@ const cartSlice = createSlice({
 
     updateDeliveryMethod(state, action) {
       state.deliveryMethod = action.payload;
-      updateTotals(state);
+      updateTotals(state); // Пересчитываем итоговую сумму при изменении способа доставки
     },
 
     applyPromoCode(state, action) {
@@ -81,6 +81,7 @@ function updateTotals(state) {
   const totalAmount = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
   let deliveryCost = 0;
 
+  // Стоимость доставки зависит от способа доставки и суммы заказа
   if (state.deliveryMethod === 'courier') {
     deliveryCost = totalAmount >= 20 ? 1 : 2.5;
   }
@@ -88,6 +89,7 @@ function updateTotals(state) {
   const discountAmount = totalAmount * state.discount;
   const totalWithDelivery = totalAmount - discountAmount + deliveryCost;
 
+  // Обновляем итоговые значения
   state.totalAmount = totalAmount - discountAmount;
   state.deliveryCost = deliveryCost;
   state.totalWithDelivery = totalWithDelivery;

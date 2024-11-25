@@ -19,6 +19,7 @@ function Main() {
     dispatch(toggleCartVisibility());
   };
 
+
   return (
     <main className="main">
       <SliderComponent />
@@ -27,6 +28,7 @@ function Main() {
 
       {/* Отображаем иконку корзины только если есть товары */}
       {cartItems.length > 0 && <IconsCart onButtonClick={handleButtonClick} items={cartItems} />}
+
 
       {/* Отображаем корзину, если она видима */}
       {isCartVisible && <Cart />}

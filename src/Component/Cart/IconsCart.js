@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 function IconsCart({ onButtonClick }) {
   const cartItems = useSelector((state) => state.cart.items);
-  
+
   // Суммируем количество товаров в корзине
   const totalQuantity = useMemo(() => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
