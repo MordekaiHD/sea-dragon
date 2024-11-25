@@ -1,24 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from "react-router-dom";
-import store from './store';
+import React from 'react'; // Подключение библиотеки React
+import ReactDOM from 'react-dom/client'; // Импорт нового API для рендеринга в React 18+
+import './index.css'; // Подключение глобальных стилей
+import App from './App'; // Главный компонент приложения
+import reportWebVitals from './reportWebVitals'; // Инструмент для измерения производительности
+import { Provider } from 'react-redux'; // Провайдер для интеграции Redux с React
+import { BrowserRouter } from "react-router-dom"; // Обёртка для маршрутизации в приложении
+import store from './store'; // Импорт хранилища Redux
 
+// Создание корневого элемента React
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Рендеринг приложения в строгом режиме
 root.render(
   <React.StrictMode>
+    {/* Провайдер Redux, обеспечивающий доступ к хранилищу из любого компонента */}
     <Provider store={store}>
+      {/* Обёртка маршрутизатора для поддержки маршрутов */}
       <BrowserRouter>
-        <App />
+        <App /> {/* Главный компонент приложения */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Настройка инструмента для измерения производительности
+// Вы можете передать функцию (например, console.log) для получения данных
 reportWebVitals();

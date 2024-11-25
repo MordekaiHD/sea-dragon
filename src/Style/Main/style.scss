@@ -1,51 +1,52 @@
-$primary-color: #64bfff;
-$secondary-color: #ffffff;
-$background-color: #000000fa;
-$botton-color: #005c9b;
-$width-information-cart: 90%;
-$text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
-$box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+$primary-color: #64bfff; // Основной цвет для элементов интерфейса.
+$secondary-color: #ffffff; // Вторичный цвет для текста.
+$background-color: #000000fa; // Фон для элементов с непрозрачностью.
+$botton-color: #005c9b; // Цвет для кнопок.
+$width-information-cart: 90%; // Ширина блока с информацией.
+$text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa; // Тень текста для выделения.
+$box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb; // Тень для выделения блоков.
 
 
 * {
   padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
+  margin: 0; 
+  scroll-behavior: smooth; // Плавный скролл по странице.
 }
 
+
 body {
-  background-color: #000018;
+  background-color: #000018; 
 
   &.no-scroll {
-    overflow: hidden;
+    overflow: hidden; // Отключение прокрутки (например, при открытии модального окна).
   }
 }
 
+
 h1 {
-  font-family: "Exo 2", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Exo 2", sans-serif; 
+  font-optical-sizing: auto; 
   font-weight: 900;
-  font-style: normal;
+  font-style: normal; 
 }
 
 p {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Inter", sans-serif; 
   font-weight: 700;
-  font-style: normal;
 }
 
+
 .header {
-  display: flex;
-  justify-items: center;
+  display: flex; 
+  justify-items: center; 
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  gap: 20px;
+  align-items: center; 
+  padding: 20px; 
+  gap: 20px; 
 
   &__title {
-    font-size: 90px;
-    text-shadow: $text-shadow;
+    font-size: 90px; 
+    text-shadow: $text-shadow; 
   }
 
   &__text {
@@ -80,159 +81,166 @@ p {
   }
 }
 
-.menu__nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  gap: 50px;
-  padding: 15px 87px;
-  margin: 40px 0px 13px 0px;
-  text-shadow: $text-shadow;
-  border: solid 1px #1074bb;
-  box-shadow: $box-shadow;
-  border-radius: 10px;
-  background: rgb(0 0 0 / 90%);
+.menu {
+  position: relative;
 
-  .nav__menu__img {
-    max-width: 55px;
-    min-height: 55px;
-  }
-
-  .menu__link {
+  &__nav {
     display: flex;
-    justify-items: center;
-    gap: 4px;
-    text-decoration: none;
-    color: $secondary-color;
     flex-direction: row;
     flex-wrap: wrap;
-    transition: transform 0.2s;
-
-    &:hover {
-      color: $primary-color;
-    }
-
-    .menu__text {
-      text-align: center;
-      font-size: 22px;
-    }
-
-    &.active {
-      color: $primary-color;
-    }
-  }
-
-  &__info {
-    display: flex;
-    align-items: center;
-    gap: 72px;
-    text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
-    border: solid 1px #64bfff;
-    box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
-    border-radius: 10px;
-    padding: 15px 6px;
-    width: 34vw;
-    background: rgba(0, 0, 0, 0.9);
+    align-content: center;
     justify-content: center;
+    gap: 50px;
+    padding: 15px 87px;
+    margin: 40px 0px 13px 0px;
+    text-shadow: $text-shadow;
+    border: solid 1px #1074bb;
+    box-shadow: $box-shadow;
+    border-radius: 10px;
+    background: rgb(0 0 0 / 90%);
 
+    .nav__menu__img {
+      max-width: 55px;
+      min-height: 55px;
+    }
 
-    &__link {
-      font-family: "Inter", sans-serif;
-      font-size: 22px;
-      text-shadow: $text-shadow;
-      border: none;
-      background: none;
+    .menu__link {
+      display: flex;
+      justify-items: center;
+      gap: 4px;
       text-decoration: none;
       color: $secondary-color;
-      transition: color 0.2s, transform 0.2s;
+      flex-direction: row;
+      flex-wrap: wrap;
+      transition: transform 0.2s;
 
       &:hover {
         color: $primary-color;
       }
-    }
-  }
 
-  &__modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    color: $secondary-color;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+      .menu__text {
+        text-align: center;
+        font-size: 22px;
+      }
 
-    &-li {
-      margin-left: 30px;
-    }
-
-    &-img {
-      width: 50px;
-    }
-
-    &-media {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &-position {
-      display: flex;
-      padding: 10px;
-      gap: 30px;
-    }
-
-    &-content {
-      gap: 13px;
-      display: flex;
-      background: #000018;
-      box-shadow: $box-shadow;
-      padding: 14px 38px;
-      border-radius: 8px;
-      max-width: 710px;
-      position: relative;
-      z-index: 1001;
-      flex-direction: column;
-    }
-
-    &-text {
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    &-close {
-      position: absolute;
-      top: 7px;
-      right: 20px;
-      border: none;
-      background: none;
-      font-size: 50px;
-      cursor: pointer;
-      color: $secondary-color;
-
-      &:hover {
-        text-shadow: $text-shadow;
+      &.active {
+        color: $primary-color;
       }
     }
 
-    &-backdrop {
+    &__info {
+      display: flex;
+      align-items: center;
+      gap: 72px;
+      text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
+      border: solid 1px #64bfff;
+      box-shadow: 0 0 10px #1074bb, 0 0 20px #1074bb, 0 0 30px #1074bb;
+      border-radius: 10px;
+      padding: 15px 6px;
+      width: 34vw;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+
+
+      &__link {
+        font-family: "Inter", sans-serif;
+        font-size: 22px;
+        text-shadow: $text-shadow;
+        border: none;
+        background: none;
+        text-decoration: none;
+        color: $secondary-color;
+        transition: color 0.2s, transform 0.2s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+
+    &__modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      color: $secondary-color;
+      justify-content: center;
+      align-items: center;
       z-index: 1000;
+
+      &-li {
+        margin-left: 30px;
+      }
+
+      &-img {
+        width: 50px;
+      }
+
+      &-media {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-position {
+        display: flex;
+        padding: 10px;
+        gap: 30px;
+      }
+
+      &-content {
+        gap: 13px;
+        display: flex;
+        background: #000018;
+        box-shadow: $box-shadow;
+        padding: 14px 38px;
+        border-radius: 8px;
+        max-width: 710px;
+        position: relative;
+        z-index: 1001;
+        flex-direction: column;
+      }
+
+      &-text {
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      &-close {
+        position: absolute;
+        top: 7px;
+        right: 20px;
+        border: none;
+        background: none;
+        font-size: 50px;
+        cursor: pointer;
+        color: $secondary-color;
+
+        &:hover {
+          text-shadow: $text-shadow;
+        }
+      }
+
+      &-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
     }
   }
-}
 
-/* Стили для меню */
-.menu {
-  position: relative;
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
 
   &__position {
     display: flex;
@@ -246,25 +254,6 @@ p {
     display: flex;
     justify-content: center;
   }
-}
-
-.menu__toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* Стили для навигационного меню */
-
-.menu__link {
-  text-decoration: none;
-  color: black;
-}
-
-.menu__link.active {
-  font-weight: bold;
 }
 
 .product__title {
@@ -374,54 +363,6 @@ p {
   }
 }
 
-.cart__icon {
-  position: fixed;
-  top: 600px;
-  right: 30px;
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none; // Отключаем взаимодействие изначально
-  transition: opacity 0.3s ease, transform 0.3s ease;
-
-  &.show {
-    opacity: 1; // Полностью видимый
-    transform: translateY(0); // Возвращаем в исходное положение
-    pointer-events: auto; // Включаем взаимодействие, когда иконка видна
-  }
-
-  &__button {
-    position: relative;
-    width: 80px; // Размер кнопки
-    height: 80px;
-    border-radius: 53px; // Круглая форма
-    border: none; // Без обводки
-    color: #fff; // Цвет текста
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow 0.3s ease;
-
-    &__img {
-      width: 35px;
-    }
-
-    &__badge {
-      position: absolute;
-      top: -3px;
-      right: 0px;
-      border-radius: 15px;
-      padding: 6px 11px;
-      background-color: $botton-color;
-    }
-
-    &:hover {
-      box-shadow: 0 0 100px 10px rgba($botton-color, 1);
-    }
-  }
-}
-
 .cart {
   position: fixed;
   top: 0;
@@ -449,6 +390,54 @@ p {
   &::-webkit-scrollbar-track {
     background: transparent;
     /* Прозрачный фон для трека полосы прокрутки */
+  }
+
+  &__icon {
+    position: fixed;
+    top: 600px;
+    right: 30px;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none; // Отключаем взаимодействие изначально
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.show {
+      opacity: 1; // Полностью видимый
+      transform: translateY(0); // Возвращаем в исходное положение
+      pointer-events: auto; // Включаем взаимодействие, когда иконка видна
+    }
+
+    &__button {
+      position: relative;
+      width: 80px; // Размер кнопки
+      height: 80px;
+      border-radius: 53px; // Круглая форма
+      border: none; // Без обводки
+      color: #fff; // Цвет текста
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease;
+
+      &__img {
+        width: 35px;
+      }
+
+      &__badge {
+        position: absolute;
+        top: -3px;
+        right: 0px;
+        border-radius: 15px;
+        padding: 6px 11px;
+        background-color: $botton-color;
+      }
+
+      &:hover {
+        box-shadow: 0 0 100px 10px rgba($botton-color, 1);
+      }
+    }
   }
 
   &__divider {
@@ -840,7 +829,6 @@ p {
     justify-content: center;
   }
 
-
   .product__article__sushi,
   .product__article__sushi__spicy,
   .product__article__sushi__baked,
@@ -887,6 +875,10 @@ p {
     margin: 20px 25px 20px 25px;
     padding: 12px 0px;
 
+    &__info {
+      gap: 34px;
+    }
+
     &__modal-content {
       padding: 24px 15px;
     }
@@ -910,6 +902,9 @@ p {
     right: 15px;
   }
 
+  .cart__order {
+    width: 80vw;
+  }
 
   .product__article__sushi,
   .product__article__sushi__spicy,
