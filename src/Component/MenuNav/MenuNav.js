@@ -2,9 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 
 function MenuNav() {
   const [activeSection, setActiveSection] = useState('');
-  const [modalContent, setModalContent] = useState(null); // Хранит контент для модального окна
+  const [modalContent, setModalContent] = useState(null); 
 
-  // Мемоизация массива секций
   const sections = useMemo(() => [
     { id: 'sushi', name: 'Суши' },
     { id: 'sharp__sushi', name: 'Острые суши' },
@@ -15,12 +14,11 @@ function MenuNav() {
     { id: 'sets', name: 'Сеты' },
   ], []);
 
-  // Добавляем debounce для оптимизации скролла
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5, // Срабатывает, если 50% элемента в зоне видимости
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -44,14 +42,8 @@ function MenuNav() {
     };
   }, [sections]);
 
-  // Функция для отображения модального окна
-  const openModal = (content) => {
-    setModalContent(content);
-  };
-
-  // Функция для закрытия модального окна
-  const closeModal = () => {
-    setModalContent(null);
+  const toggleModal = (content) => {
+    setModalContent(prevContent => (prevContent ? null : content));
   };
 
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -91,8 +83,6 @@ function MenuNav() {
           {isMenuOpen && <div className="menu__backdrop" onClick={toggleMenu}></div>}
         </div>
       </div>
-
-
 
       <div className="menu__info__position">
         <nav className="menu__nav__info">
@@ -167,7 +157,7 @@ function MenuNav() {
           ].map((link, index) => (
             <button
               key={index}
-              onClick={() => openModal(link.content)}
+              onClick={() => toggleModal(link.content)}
               className="menu__nav__info__link"
             >
               <p className="menu__nav__info__text">{link.text}</p>
@@ -176,15 +166,13 @@ function MenuNav() {
         </nav>
       </div>
 
-
-      {/* Модальное окно */}
       {modalContent && (
         <div className="menu__nav__modal">
           <div className="menu__nav__modal-content">
-            <button className="menu__nav__modal-close" onClick={closeModal}>×</button>
+            <button className="menu__nav__modal-close" onClick={toggleModal}>×</button>
             {modalContent}
           </div>
-          <div className="menu__nav__modal-backdrop" onClick={closeModal}></div>
+          <div className="menu__nav__modal-backdrop" onClick={toggleModal}></div>
         </div>
       )}
     </>

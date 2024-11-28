@@ -1,19 +1,17 @@
-import { Link } from "react-router-dom"; // Импорт компонента Link для маршрутизации
-import SushiBarLocation from "./Feature/SushiBarLocation"; // Импорт компонента с информацией о местоположении суши-бара
+import { Link } from "react-router-dom";
+import SushiBarLocation from "./Feature/SushiBarLocation";
 
 function Footer() {
   return (
     <footer className="footer">
-      {/* Компонент для отображения адреса суши-бара */}
       <SushiBarLocation />
 
-      {/* Логотип и информация о бренде в футере */}
       <section className="footer__logo">
         <Link to="/" className="footer__logo__link">
           <div className="footer__logo__dragon">
             <img
-              src="/ImgHeader/Dragon_Logo.png" // Путь к логотипу
-              alt="logo" // Альтернативный текст для доступности
+              src="/ImgHeader/Dragon_Logo.png"
+              alt="logo"
               className="footer__logo__img"
             />
           </div>
@@ -24,14 +22,11 @@ function Footer() {
         </Link>
       </section>
 
-      {/* Навигационная секция футера */}
       <nav className="footer__nav">
-        {/* Блок для оформления заказа */}
         <article className="footer__nav__order">
           <h1 className="footer__nav__order-title">Оформить заказ</h1>
           <a href="tel:+375339029342" className="footer__nav__order-tel">+375 (33) 902-93-42</a>
           <div className="footer__nav__order-info">
-            {/* Ссылки на социальные сети и приложения */}
             <a
               href="https://www.instagram.com/morskoy_drakon2023?igsh=MTdhbnYxcXA0ZGF3ZQ%3D%3D&utm_source=qr"
               target="_blank"
@@ -68,7 +63,6 @@ function Footer() {
           </div>
         </article>
 
-        {/* Блок с информацией о времени доставки */}
         <article className="footer__nav__workingTime">
           <h1 className="footer__nav__workingTime-title">Время доставки</h1>
           <p className="footer__nav__workingTime-text">с 10:00 до 22:00</p>
@@ -78,4 +72,4 @@ function Footer() {
   );
 }
 
-export default Footer; // Экспорт компонента для использования в других частях приложения
+export default Footer;

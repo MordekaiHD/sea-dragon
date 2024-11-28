@@ -3,14 +3,15 @@ import { useMemo } from 'react';
 
 function IconsCart({ onButtonClick }) {
   const cartItems = useSelector((state) => state.cart.items);
-
-  // Суммируем количество товаров в корзине
+  
   const totalQuantity = useMemo(() => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
 
+  const cartIconClass = totalQuantity > 0 ? 'cart__icon show' : 'cart__icon';
+
   return (
-    <div className={`cart__icon ${totalQuantity > 0 ? 'show' : ''}`}>
+    <div className={cartIconClass}>
       <button
         className="cart__icon__button"
         onClick={onButtonClick}
@@ -19,7 +20,7 @@ function IconsCart({ onButtonClick }) {
         <img
           className="cart__icon__button__img"
           src="/ImgSectionMenu/icon/cart.svg"
-          alt={totalQuantity > 0 ? `Корзина с ${totalQuantity} товаром` : 'Корзина'}
+          alt={totalQuantity > 0 ? `Корзина с ${totalQuantity} товаром` : 'Корзина пуста'}
         />
         {totalQuantity > 0 && (
           <span className="cart__icon__button__badge">{totalQuantity}</span>

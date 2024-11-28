@@ -26,7 +26,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
-      updateTotals(state); // Обновление итогов после изменения количества товаров
+      updateTotals(state); 
     },
 
     removeItem(state, action) {
@@ -57,21 +57,19 @@ const cartSlice = createSlice({
 
     updateDeliveryMethod(state, action) {
       state.deliveryMethod = action.payload;
-      updateTotals(state); // Пересчитываем итоговую сумму при изменении способа доставки
+      updateTotals(state); 
     },
 
     applyPromoCode(state, action) {
       const promoCode = action.payload;
       state.promoCode = promoCode;
 
-      if (promoCode === 'MORSKOY') {
-        state.discount = 0.1; // 10% скидка
-      } else if (promoCode === 'MORSKOY20') {
-        state.discount = 0.2; // 20% скидка
-      } else {
-        state.discount = 0;
-      }
+      const promoCodes = {
+        'MORSKOY': 0.1, 
+        'MORSKOY2': 0.2, 
+      };
 
+      state.discount = promoCodes[promoCode] || 0;
       updateTotals(state);
     },
   },
@@ -81,7 +79,6 @@ function updateTotals(state) {
   const totalAmount = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
   let deliveryCost = 0;
 
-  // Стоимость доставки зависит от способа доставки и суммы заказа
   if (state.deliveryMethod === 'courier') {
     deliveryCost = totalAmount >= 20 ? 1 : 2.5;
   }
@@ -89,7 +86,6 @@ function updateTotals(state) {
   const discountAmount = totalAmount * state.discount;
   const totalWithDelivery = totalAmount - discountAmount + deliveryCost;
 
-  // Обновляем итоговые значения
   state.totalAmount = totalAmount - discountAmount;
   state.deliveryCost = deliveryCost;
   state.totalWithDelivery = totalWithDelivery;

@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../../store/cartSlice'; // Импортируем действие для добавления товара
+import { addItem } from '../../store/cartSlice'; 
 
 function ProductLayout({
   id,
-  img = '/placeholder-image.jpg', // Заглушка для изображения
+  img = '/placeholder-image.jpg',
   title,
   weight,
   text,
   price,
-  quantity = 1, // Значение по умолчанию
-  className = '' // Пустой класс по умолчанию
+  quantity = 1, 
+  className = '',
 }) {
   const dispatch = useDispatch();
 
-  // Обработчик добавления товара в корзину
   const handleAddToCart = () => {
     dispatch(addItem({ id, img, title, weight, text, price, quantity }));
   };
@@ -39,16 +38,15 @@ function ProductLayout({
   );
 }
 
-// Проверка типов пропсов
 ProductLayout.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // ID может быть строкой или числом
-  img: PropTypes.string, // URL изображения
-  title: PropTypes.string.isRequired, // Название продукта
-  weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // Вес продукта
-  text: PropTypes.string.isRequired, // Описание продукта
-  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // Цена продукта
-  quantity: PropTypes.number, // Количество
-  className: PropTypes.string, // Дополнительный CSS-класс
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, 
+  img: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  weight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  text: PropTypes.string.isRequired,
+  price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  quantity: PropTypes.number,
+  className: PropTypes.string,
 };
 
 export default ProductLayout;

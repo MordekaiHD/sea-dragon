@@ -1,53 +1,47 @@
-import React, { useEffect } from 'react'; // Импорт React и хука useEffect
-import '../../Style/SushiBarLocation/style.css'; // Подключение стилей
+import React, { useEffect } from 'react';
+import '../../Style/SushiBarLocation/style.css';
 
 const SushiBarLocation = () => {
   useEffect(() => {
-    // Проверяем, загружен ли уже API Яндекс.Карт
     if (!window.ymaps) {
-      const script = document.createElement('script'); // Создаём новый тег <script>
-      script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU'; // URL API Яндекс.Карт
-      script.async = true; // Асинхронная загрузка
-      script.onload = () => window.ymaps.ready(init); // Инициализация карты после загрузки
-      document.head.appendChild(script); // Добавляем тег <script> в <head>
+      const script = document.createElement('script');
+      script.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU';
+      script.async = true;
+      script.onload = () => window.ymaps.ready(init);
+      document.head.appendChild(script);
     } else {
-      // Если API уже загружен, просто инициализируем карту
       window.ymaps.ready(init);
     }
 
     function init() {
       const mapElement = document.getElementById('map');
 
-      // Проверяем, была ли карта уже инициализирована
       if (!mapElement.dataset.mapInitialized) {
         const map = new window.ymaps.Map(mapElement, {
-          center: [52.138444, 29.318262], // Координаты центра карты
-          zoom: 16, // Масштаб
-          controls: ['zoomControl'], // Контролы карты
+          center: [52.138444, 29.318262],
+          zoom: 16,
+          controls: ['zoomControl'],
         });
 
-        // Отключаем скролл для увеличения/уменьшения карты
         map.behaviors.disable(['scrollZoom']);
 
-        // Добавляем маркер на карту
         const marker = new window.ymaps.Placemark(
-          [52.138444, 29.318262], // Координаты маркера
+          [52.138444, 29.318262],
           {
-            balloonContent: 'Суши-бар', // Содержимое всплывающего окна
+            balloonContent: 'Суши-бар',
           },
           {
-            preset: 'islands#icon', // Тип маркера
-            iconColor: '#0095b6', // Цвет маркера
+            preset: 'islands#icon',
+            iconColor: '#0095b6',
           }
         );
 
-        map.geoObjects.add(marker); // Добавляем маркер на карту
+        map.geoObjects.add(marker);
 
-        mapElement.dataset.mapInitialized = true; // Помечаем, что карта инициализирована
+        mapElement.dataset.mapInitialized = true;
       }
     }
 
-    // Очистка: удаляем добавленный скрипт
     return () => {
       const script = document.querySelector('script[src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"]');
       if (script) {
@@ -56,7 +50,6 @@ const SushiBarLocation = () => {
     };
   }, []);
 
-  // Контейнер для карты
   return <div className="map" id="map" style={{ height: '400px' }} />;
 };
 

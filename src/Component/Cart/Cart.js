@@ -13,12 +13,11 @@ import {
 function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
-  const [quantity, setQuantity] = useState(1); // По умолчанию 1 палочка
+  const [quantity, setQuantity] = useState(1); 
   const { totalAmount, deliveryCost, totalWithDelivery } = useSelector(selectTotalAmount);
   const [isVisible, setIsVisible] = useState(true);
   const cartRef = useRef(null);
 
-  // Локальное состояние для формы (объединено в один объект)
   const [formData, setFormData] = useState({
     deliveryMethod: 'pickup',
     address: '',
@@ -28,7 +27,7 @@ function Cart() {
     coupon: '',
     paymentMethod: 'card',
     deliveryTime: '',
-    sticks: false, // По умолчанию палочки не выбраны
+    sticks: false,
     sticksQuantity: quantity,
   });
 
@@ -39,7 +38,6 @@ function Cart() {
     deliveryTime: '',
   });
 
-  // Обработчик изменения полей формы
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -53,7 +51,7 @@ function Cart() {
     }
 
     if (name === 'coupon') {
-      dispatch(applyPromoCode(value)); // Применяем промокод
+      dispatch(applyPromoCode(value)); 
     }
   };
 
@@ -62,10 +60,9 @@ function Cart() {
   };
 
   const decreaseQuantity = () => {
-    setQuantity((prev) => (prev > 0 ? prev - 1 : 0)); // Минимум 1
+    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
   };
 
-  // Валидация формы
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Введите имя';
@@ -93,7 +90,7 @@ function Cart() {
 
     console.log('Order submitted:', orderData);
     alert('Заказ успешно отправлен!');
-    dispatch(clearCart()); // Очистить корзину
+    dispatch(clearCart());
     resetForm();
   };
 
@@ -124,13 +121,10 @@ function Cart() {
     }
   };
 
-
-  // Функция для закрытия модального окна
   const closeModal = () => {
     setIsVisible(false);
   };
 
-  // Закрытие корзины при клике вне нее
   const handleClickOutside = (event) => {
     if (cartRef.current && !cartRef.current.contains(event.target)) {
       setIsVisible(false);

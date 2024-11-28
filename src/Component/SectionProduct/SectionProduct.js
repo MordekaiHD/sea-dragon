@@ -1,40 +1,38 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../store/cartSlice.js";
 
-// Динамическая загрузка секций меню (разделы продуктов)
-import SectionProductSushi from "../SectionProduct/SectionProductSushi.js";
-import SectionProductSpicySushi from "../SectionProduct/SectionProductSpicySushi.js";
-import SectionProductBakedSushi from "../SectionProduct/SectionProductBakedSushi.js";
-import SectionProductColdRolls from "../SectionProduct/SectionProductColdRolls.js";
-import SectionProductBakedRolls from "../SectionProduct/SectionProductBakedRolls.js";
-import SectionProductTempuraSushi from "../SectionProduct/SectionProductTempuraSushi.js";
-import SectionProductSetsSushi from "../SectionProduct/SectionProductSetsSushi.js";
+const SectionProductSushi = lazy(() => import("../SectionProduct/SectionProductSushi"));
+const SectionProductSpicySushi = lazy(() => import("../SectionProduct/SectionProductSpicySushi.js"));
+const SectionProductBakedSushi = lazy(() => import("../SectionProduct/SectionProductBakedSushi.js"));
+const SectionProductColdRolls = lazy(() => import("../SectionProduct/SectionProductColdRolls.js"));
+const SectionProductBakedRolls = lazy(() => import("../SectionProduct/SectionProductBakedRolls.js"));
+const SectionProductTempuraSushi = lazy(() => import("../SectionProduct/SectionProductTempuraSushi.js"));
+const SectionProductSetsSushi = lazy(() => import("../SectionProduct/SectionProductSetsSushi.js"));
 
 function SectionProduct() {
-  const dispatch = useDispatch(); // Хук для использования функции dispatch из Redux
+  const dispatch = useDispatch(); 
 
-  // Обработчик добавления товара в корзину
   const handleAddToCart = (product) => {
-    dispatch(addItem(product)); // Вызываем action для добавления товара в Redux
+    dispatch(addItem(product));
   };
 
-  // Конфигурация секций: массив с идентификаторами и связанными компонентами
   const sections = [
-    { id: "sushi", Component: SectionProductSushi }, // Секция "Суши"
-    { id: "spicySushi", Component: SectionProductSpicySushi }, // Секция "Острые суши"
-    { id: "bakedSushi", Component: SectionProductBakedSushi }, // Секция "Запеченные суши"
-    { id: "coldRolls", Component: SectionProductColdRolls }, // Секция "Холодные роллы"
-    { id: "bakedRolls", Component: SectionProductBakedRolls }, // Секция "Запеченные роллы"
-    { id: "tempura", Component: SectionProductTempuraSushi }, // Секция "Темпура"
-    { id: "sets", Component: SectionProductSetsSushi }, // Секция "Сеты"
+    { id: "sushi", Component: SectionProductSushi },
+    { id: "spicySushi", Component: SectionProductSpicySushi },
+    { id: "bakedSushi", Component: SectionProductBakedSushi }, 
+    { id: "coldRolls", Component: SectionProductColdRolls }, 
+    { id: "bakedRolls", Component: SectionProductBakedRolls }, 
+    { id: "tempura", Component: SectionProductTempuraSushi },
+    { id: "sets", Component: SectionProductSetsSushi }, 
   ];
 
   return (
     <>
-      {/* Проходим по всем секциям и рендерим их компоненты */}
       {sections.map(({ id, Component }) => (
-        <Component key={id} handleAddToCart={handleAddToCart} /> // Передаем обработчик добавления в корзину
+        <Suspense key={id} fallback={<div>Загрузка...</div>}>
+          <Component handleAddToCart={handleAddToCart} />
+        </Suspense>
       ))}
     </>
   );
