@@ -1,112 +1,29 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
+  toggleCartVisibility,
   removeItem,
   updateQuantity,
   selectCartItems,
   selectTotalAmount,
-  updateDeliveryMethod,
   clearCart,
+  updateDeliveryMethod,
   applyPromoCode,
-} from '../../store/cartSlice';
+  selectFormData,
+  updateFormData,
+} from "../../store/cartSlice";
 
 function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
-  const [quantity, setQuantity] = useState(1); 
   const { totalAmount, deliveryCost, totalWithDelivery } = useSelector(selectTotalAmount);
-  const [isVisible, setIsVisible] = useState(true);
+  const formData = useSelector(selectFormData);
+  const isVisible = useSelector((state) => state.cart.isVisible);
+
   const cartRef = useRef(null);
 
-  const [formData, setFormData] = useState({
-    deliveryMethod: 'pickup',
-    address: '',
-    name: '',
-    phone: '',
-    comments: '',
-    coupon: '',
-    paymentMethod: 'card',
-    deliveryTime: '',
-    sticks: false,
-    sticksQuantity: quantity,
-  });
-
-  const [errors, setErrors] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    deliveryTime: '',
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-
-    if (name === 'deliveryMethod') {
-      dispatch(updateDeliveryMethod(value));
-    }
-
-    if (name === 'coupon') {
-      dispatch(applyPromoCode(value)); 
-    }
-  };
-
-  const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
-  };
-
-  const decreaseQuantity = () => {
-    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Введите имя';
-    if (!formData.phone.trim() || !/^\+?\d{10,15}$/.test(formData.phone))
-      newErrors.phone = 'Введите корректный номер телефона';
-    if (formData.deliveryMethod === 'courier' && !formData.address.trim())
-      newErrors.address = 'Адрес доставки обязателен для курьерской доставки';
-    if (!formData.deliveryTime.trim()) newErrors.deliveryTime = 'Выберите время доставки';
-    return newErrors;
-  };
-
-  const handleSubmit = () => {
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-    const orderData = {
-      items,
-      totalAmount,
-      deliveryCost,
-      totalWithDelivery,
-      ...formData,
-    };
-
-    console.log('Order submitted:', orderData);
-    alert('Заказ успешно отправлен!');
-    dispatch(clearCart());
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setFormData({
-      deliveryMethod: 'pickup',
-      address: '',
-      name: '',
-      phone: '',
-      comments: '',
-      coupon: '',
-      paymentMethod: 'card',
-      deliveryTime: '',
-    });
-    setErrors({});
-  };
+  const [errors, setErrors] = useState({});
+  const [quantity, setQuantity] = useState(1);
 
   const onIncreaseQuantity = (id) => {
     dispatch(updateQuantity({ id, quantity: 1 }));
@@ -121,27 +38,82 @@ function Cart() {
     }
   };
 
-  const closeModal = () => {
-    setIsVisible(false);
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
   };
 
-  const handleClickOutside = (event) => {
-    if (cartRef.current && !cartRef.current.contains(event.target)) {
-      setIsVisible(false);
-      document.body.classList.remove('no-scroll');
+  const decreaseQuantity = () => {
+    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+  }
+
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    dispatch(
+      updateFormData({
+        [name]: type === "checkbox" ? checked : value,
+      })
+    );
+
+    if (name === "deliveryMethod") {
+      dispatch(updateDeliveryMethod(value));
+    }
+
+    if (name === "coupon") {
+      dispatch(applyPromoCode(value));
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Введите имя";
+    if (!formData.phone.trim() || !/^\+?\d{10,15}$/.test(formData.phone))
+      newErrors.phone = "Введите корректный номер телефона";
+    if (formData.deliveryMethod === "courier" && !formData.address.trim())
+      newErrors.address = "Адрес доставки обязателен для курьерской доставки";
+    if (!formData.deliveryTime.trim()) newErrors.deliveryTime = "Выберите время доставки";
+    return newErrors;
+  };
+
+  const handleSubmit = () => {
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    const orderData = {
+      items,
+      totalAmount,
+      deliveryCost,
+      totalWithDelivery,
+      ...formData,
     };
-  }, []);
+
+    console.log("Order submitted:", orderData);
+    alert("Заказ успешно отправлен!");
+    dispatch(clearCart());
+  };
 
   useEffect(() => {
-    document.body.classList.toggle('no-scroll', isVisible);
-  }, [isVisible]);
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        dispatch(toggleCartVisibility());
+      }
+    };
+
+    if (isVisible) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.classList.remove("no-scroll");
+    };
+  }, [isVisible, dispatch]);
 
   if (!isVisible) return null;
 
@@ -217,8 +189,6 @@ function Cart() {
                 />
               </button>
             </div>
-
-
           </div>
 
           <div className="cart__order-delivery">
@@ -286,8 +256,9 @@ function Cart() {
           <div className="cart__order-submit">
             <button className="cart__order-submit-button" onClick={handleSubmit}>ЗАКАЗАТЬ</button>
           </div>
-
-          <button className="cart__order-close" onClick={closeModal}>×</button>
+          <button className="cart__order-close" onClick={() => dispatch(toggleCartVisibility())}>
+            ×
+          </button>
         </div>
       </div>
     </div>

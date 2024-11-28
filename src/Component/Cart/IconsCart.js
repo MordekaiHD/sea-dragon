@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleCartVisibility } from '../../store/cartSlice';
 
-function IconsCart({ onButtonClick }) {
+function IconsCart() {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
-  
+
   const totalQuantity = useMemo(() => {
     return cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }, [cartItems]);
@@ -14,7 +16,7 @@ function IconsCart({ onButtonClick }) {
     <div className={cartIconClass}>
       <button
         className="cart__icon__button"
-        onClick={onButtonClick}
+        onClick={() => dispatch(toggleCartVisibility())}
         aria-label="Открыть корзину"
       >
         <img

@@ -202,7 +202,7 @@ const productsCatalog =
       title: "Соломон",
       text: "рис, нори, сыр, огурец, курица, чесночный соус , лук зеленый",
       weight: 258,
-      price: '9.3',  
+      price: '9',  
       quantity: 1
     },
   ],

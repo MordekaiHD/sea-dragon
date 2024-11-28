@@ -9,6 +9,16 @@ const initialState = {
   totalWithDelivery: 0,
   promoCode: '',
   discount: 0,
+  formData: {  // Добавляем состояние для данных формы
+    name: '',
+    phone: '',
+    address: '',
+    deliveryTime: '',
+    comments: '',
+    sticks: false,
+    sticksQuantity: 1,
+    paymentMethod: 'card',
+  },
 };
 
 const cartSlice = createSlice({
@@ -26,7 +36,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
       }
-      updateTotals(state); 
+      updateTotals(state);
     },
 
     removeItem(state, action) {
@@ -53,11 +63,12 @@ const cartSlice = createSlice({
       state.totalWithDelivery = 0;
       state.promoCode = '';
       state.discount = 0;
+      state.formData = initialState.formData; // Сбрасываем данные формы при очистке корзины
     },
 
     updateDeliveryMethod(state, action) {
       state.deliveryMethod = action.payload;
-      updateTotals(state); 
+      updateTotals(state);
     },
 
     applyPromoCode(state, action) {
@@ -65,12 +76,16 @@ const cartSlice = createSlice({
       state.promoCode = promoCode;
 
       const promoCodes = {
-        'MORSKOY': 0.1, 
-        'MORSKOY2': 0.2, 
+        'MORSKOY': 0.1,
+        'MORSKOY2': 0.2,
       };
 
       state.discount = promoCodes[promoCode] || 0;
       updateTotals(state);
+    },
+
+    updateFormData(state, action) {  // Новый редьюсер для обновления данных формы
+      state.formData = { ...state.formData, ...action.payload };
     },
   },
 });
@@ -99,6 +114,7 @@ export const {
   clearCart,
   updateDeliveryMethod,
   applyPromoCode,
+  updateFormData,
 } = cartSlice.actions;
 
 export const selectCartItems = (state) => state.cart.items;
@@ -108,5 +124,6 @@ export const selectTotalAmount = (state) => ({
   totalWithDelivery: state.cart.totalWithDelivery,
 });
 export const selectPromoCode = (state) => state.cart.promoCode;
+export const selectFormData = (state) => state.cart.formData; // Выбираем данные формы из состояния
 
 export default cartSlice.reducer;
