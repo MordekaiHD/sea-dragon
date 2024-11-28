@@ -21,8 +21,8 @@ function Main() {
     <main className="main">
       <SliderComponent />
       <MenuNav />
-      {cartItems.length > 0 && <IconsCart onButtonClick={handleButtonClick} items={cartItems} />}
       <SectionProduct />
+      {cartItems.length > 0 && <IconsCart onButtonClick={handleButtonClick} items={cartItems} />}
       {isCartVisible && <Cart />}
     </main>
   );
