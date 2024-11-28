@@ -9,7 +9,7 @@ const initialState = {
   totalWithDelivery: 0,
   promoCode: '',
   discount: 0,
-  formData: {  // Добавляем состояние для данных формы
+  formData: { 
     name: '',
     phone: '',
     address: '',
@@ -63,7 +63,7 @@ const cartSlice = createSlice({
       state.totalWithDelivery = 0;
       state.promoCode = '';
       state.discount = 0;
-      state.formData = initialState.formData; // Сбрасываем данные формы при очистке корзины
+      state.formData = initialState.formData;
     },
 
     updateDeliveryMethod(state, action) {
@@ -84,7 +84,7 @@ const cartSlice = createSlice({
       updateTotals(state);
     },
 
-    updateFormData(state, action) {  // Новый редьюсер для обновления данных формы
+    updateFormData(state, action) {  
       state.formData = { ...state.formData, ...action.payload };
     },
   },
@@ -124,6 +124,6 @@ export const selectTotalAmount = (state) => ({
   totalWithDelivery: state.cart.totalWithDelivery,
 });
 export const selectPromoCode = (state) => state.cart.promoCode;
-export const selectFormData = (state) => state.cart.formData; // Выбираем данные формы из состояния
+export const selectFormData = (state) => state.cart.formData; 
 
 export default cartSlice.reducer;
