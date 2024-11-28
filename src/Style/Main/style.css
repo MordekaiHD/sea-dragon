@@ -312,21 +312,16 @@ p {
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.7);
   overflow-y: auto;
-  /* Чтобы появилась полоса прокрутки, если контент не помещается */
 }
 .cart::-webkit-scrollbar {
   width: 15px;
-  /* Ширина полосы прокрутки */
 }
 .cart::-webkit-scrollbar-thumb {
   background: #005c9b;
-  /* Цвет ползунка */
   border-radius: 4px;
-  /* Закругление углов ползунка */
 }
 .cart::-webkit-scrollbar-track {
   background: transparent;
-  /* Прозрачный фон для трека полосы прокрутки */
 }
 .cart__icon {
   position: fixed;
@@ -714,7 +709,7 @@ p {
     width: 56vw;
   }
   .cart__icon {
-    top: 725px;
+    top: 530px;
     right: 12px;
   }
   .footer {

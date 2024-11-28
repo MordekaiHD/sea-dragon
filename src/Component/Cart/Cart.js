@@ -194,8 +194,8 @@ function Cart() {
           <div className="cart__order-delivery">
             <h2>Выберите способ доставки:</h2>
             <select name="deliveryMethod" className='cart__order-select' value={formData.deliveryMethod} onChange={handleInputChange}>
-              <option value="courier">Курьер</option>
               <option value="pickup">Самовывоз</option>
+              <option value="courier">Курьер</option>
             </select>
           </div>
 

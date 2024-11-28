@@ -372,24 +372,19 @@ p {
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.7);
   overflow-y: auto;
-  /* Чтобы появилась полоса прокрутки, если контент не помещается */
 
-  // Скролл
+
   &::-webkit-scrollbar {
     width: 15px;
-    /* Ширина полосы прокрутки */
   }
 
   &::-webkit-scrollbar-thumb {
     background: $botton-color;
-    /* Цвет ползунка */
     border-radius: 4px;
-    /* Закругление углов ползунка */
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    /* Прозрачный фон для трека полосы прокрутки */
   }
 
   &__icon {
@@ -399,22 +394,22 @@ p {
     z-index: 100;
     opacity: 1;
     transform: translateY(10px);
-    pointer-events: none; // Отключаем взаимодействие изначально
+    pointer-events: none; 
     transition: opacity 0.3s ease, transform 0.3s ease;
 
     &.show {
-      opacity: 1; // Полностью видимый
-      transform: translateY(0); // Возвращаем в исходное положение
-      pointer-events: auto; // Включаем взаимодействие, когда иконка видна
+      opacity: 1; 
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     &__button {
       position: relative;
-      width: 80px; // Размер кнопки
+      width: 80px; 
       height: 80px;
-      border-radius: 53px; // Круглая форма
-      border: none; // Без обводки
-      color: #fff; // Цвет текста
+      border-radius: 53px; 
+      border: none; 
+      color: #fff; 
       font-size: 16px;
       display: flex;
       align-items: center;
@@ -846,7 +841,7 @@ p {
   }
 
   .cart__icon {
-    top: 725px;
+    top: 530px;
     right: 12px;
   }
 

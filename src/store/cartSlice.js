@@ -95,7 +95,7 @@ function updateTotals(state) {
   let deliveryCost = 0;
 
   if (state.deliveryMethod === 'courier') {
-    deliveryCost = totalAmount >= 20 ? 1 : 2.5;
+    deliveryCost = totalAmount <= 20 ? 2.5 : 1;
   }
 
   const discountAmount = totalAmount * state.discount;
