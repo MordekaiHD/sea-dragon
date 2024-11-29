@@ -69,6 +69,12 @@ $secondary-color: #ffffff;
   }
 }
 
+@media (max-width: 1440px) {
+  .slider-container {
+    height: 325px;
+  }
+}
+
 @media (max-width: 1024px) {
   .slider-container {
     height: 250px;

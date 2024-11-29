@@ -93,6 +93,7 @@ function Cart() {
     console.log("Order submitted:", orderData);
     alert("Заказ успешно отправлен!");
     dispatch(clearCart());
+    setErrors({});
   };
 
   useEffect(() => {

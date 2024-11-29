@@ -125,6 +125,7 @@ p {
   text-shadow: 0 0 10px #1074bb, 0 0 10px #6aa9fa;
   border: none;
   background: none;
+  cursor: pointer;
   text-decoration: none;
   color: #ffffff;
   transition: color 0.2s, transform 0.2s;
@@ -672,6 +673,11 @@ p {
   font-size: 20px;
 }
 
+@media (max-width: 1440px) {
+  .menu__nav {
+    padding: 15px 50px;
+  }
+}
 @media (max-width: 1024px) {
   .header__logo__link {
     margin-right: 0;
@@ -1082,7 +1088,6 @@ p {
   }
   .cart::-webkit-scrollbar {
     width: 3px;
-    /* Ширина полосы прокрутки */
   }
   .cart__icon {
     top: 543px;
@@ -1098,7 +1103,6 @@ p {
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    /* Убираем стандартный стиль браузера */
   }
   .cart__order-information {
     width: 100%;
@@ -1110,6 +1114,7 @@ p {
     text-align: center;
     font-size: 16px;
     width: 130px;
+    margin-right: 10px;
   }
   .cart__order__product__quantity {
     display: flex;
