@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Морской дракон: Веб-сайт суши-бара
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Описание проекта:**  
+Этот проект представляет собой веб-приложение для суши-бара "Морской дракон". Приложение разработано с использованием современных технологий и предоставляет удобный интерфейс для оформления заказов, выбора способа доставки, использования промокодов и расчета итоговой стоимости заказа.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Функционал
 
-### `npm start`
+1. **Корзина покупок:**
+   - Добавление, удаление и обновление количества товаров.
+   - Автоматический пересчет итоговой стоимости с учетом количества товаров, скидок и стоимости доставки.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Выбор способа доставки:**
+   - "Самовывоз" — без дополнительных затрат.
+   - "Доставка курьером" — стоимость зависит от суммы заказа.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Применение промокодов:**
+   - `MORSKOY` — скидка 10%.
+   - `MORSKOY20` — скидка 20%.
 
-### `npm test`
+4. **Итоговая сумма заказа:**
+   - Учитывается стоимость товаров, скидка по промокоду и доставка.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Валидация форм:**
+   - Проверка корректности данных пользователя при оформлении заказа.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Используемые технологии
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **React:**  
+  Для построения пользовательского интерфейса и реализации компонентного подхода.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Redux Toolkit:**  
+  Для управления состоянием корзины, доставки и скидок.
 
-### `npm run eject`
+- **HTML и CSS:**  
+  Для создания структуры и стилизации веб-страницы.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **JavaScript:**  
+  Для реализации интерактивности и бизнес-логики.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Установка и запуск
+1. Клонирование репозитория
+```
+git clone https://github.com/MordekaiHD/sea-dragon
+```
+2. Установка зависимостей
+```
+npm install
+```
+3. Запуск приложения
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Приложение будет доступно по адресу http://
+```
+http://localhost:3000.
+```
+---
 
-## Learn More
+## Как использовать
+1. **Откройте приложение.**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Выберите блюда и добавьте их в корзину.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Выберите способ доставки и при необходимости введите промокод.**
 
-### Code Splitting
+4. **формите заказ, указав контактные данные.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
+## Планы по развитию
+- Добавить интеграцию с серверной частью для обработки реальных заказов.
 
-### Analyzing the Bundle Size
+- Реализовать личный кабинет для пользователей.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Поддержка нескольких языков.
 
-### Making a Progressive Web App
+## Автор
+**Пекшев Евгений Геннадьевич**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Проект выполнен в рамках дипломной работы для создания веб-сайта суши-бара "Морской дракон".
