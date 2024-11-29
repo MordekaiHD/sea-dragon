@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import SushiBarLocation from "./Feature/SushiBarLocation";
 
 function Footer() {
@@ -7,7 +6,7 @@ function Footer() {
       <SushiBarLocation />
 
       <section className="footer__logo">
-        <Link to="/" className="footer__logo__link">
+        <a href="#header" className="footer__logo__link">
           <div className="footer__logo__dragon">
             <img
               src="/ImgHeader/Dragon_Logo.png"
@@ -19,7 +18,7 @@ function Footer() {
             <h1 className="footer__logo__title">Морской Дракон</h1>
             <p className="footer__logo__text">суши - роллы</p>
           </div>
-        </Link>
+        </a>
       </section>
 
       <nav className="footer__nav">

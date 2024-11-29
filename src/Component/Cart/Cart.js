@@ -175,7 +175,7 @@ function Cart() {
                   alt="minus"
                 />
               </button>
-              <span className="cart__order__product__quantity__button-style">
+              <span name="quantity" value={formData.quantity} className="cart__order__product__quantity__button-style">
                 {quantity}
               </span>
               <button

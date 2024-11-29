@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header" id="header">
       <section className="header__logo">
         <Link to="/" className="header__logo__link">
           <div className="header__logo__img">
@@ -12,7 +12,7 @@ function Header() {
               className="header__logo__img"
             />
           </div>
-          <div className="logo__title">
+          <div className="logo__title" >
             <h1 className="header__title">Морской Дракон</h1>
             <p className="header__text">суши - роллы</p>
           </div>

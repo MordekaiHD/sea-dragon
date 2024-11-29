@@ -7,16 +7,18 @@ const initialState = {
   deliveryCost: 0,
   totalAmount: 0,
   totalWithDelivery: 0,
-  promoCode: '',
+  coupon: '',
   discount: 0,
-  formData: { 
+  formData: {
+    items: [],
+    isVisible: false,
+    deliveryMethod: 'pickup',
+    deliveryTime: '',
     name: '',
     phone: '',
     address: '',
-    deliveryTime: '',
     comments: '',
-    sticks: false,
-    sticksQuantity: 1,
+    coupon: '',
     paymentMethod: 'card',
   },
 };
@@ -61,8 +63,12 @@ const cartSlice = createSlice({
       state.deliveryCost = 0;
       state.totalAmount = 0;
       state.totalWithDelivery = 0;
-      state.promoCode = '';
+      state.coupon = '';
       state.discount = 0;
+      state.deliveryMethod = 'pickup';
+      state.name = '';
+      state.phone = '';
+      state.address = '';
       state.formData = initialState.formData;
     },
 
@@ -84,7 +90,7 @@ const cartSlice = createSlice({
       updateTotals(state);
     },
 
-    updateFormData(state, action) {  
+    updateFormData(state, action) {
       state.formData = { ...state.formData, ...action.payload };
     },
   },
@@ -124,6 +130,6 @@ export const selectTotalAmount = (state) => ({
   totalWithDelivery: state.cart.totalWithDelivery,
 });
 export const selectPromoCode = (state) => state.cart.promoCode;
-export const selectFormData = (state) => state.cart.formData; 
+export const selectFormData = (state) => state.cart.formData;
 
 export default cartSlice.reducer;

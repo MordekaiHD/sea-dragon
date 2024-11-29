@@ -55,7 +55,6 @@ function MenuNav() {
 
       <div className="menu__position">
         <div className="menu">
-          {/* Кнопка для гамбургер-меню */}
           <button
             className="menu__toggle"
             onClick={toggleMenu}
@@ -64,7 +63,6 @@ function MenuNav() {
             ☰
           </button>
 
-          {/* Навигационное меню для больших экранов */}
           <nav className={`menu__nav ${isMenuOpen ? 'menu__nav--open' : ''}`}>
             {sections.map((section) => (
               <a
@@ -79,7 +77,6 @@ function MenuNav() {
             ))}
           </nav>
 
-          {/* Фон для затемнения, если гамбургер-меню открыто */}
           {isMenuOpen && <div className="menu__backdrop" onClick={toggleMenu}></div>}
         </div>
       </div>
@@ -97,7 +94,7 @@ function MenuNav() {
                   <h1>Как оформить заказ:</h1>
                   <ul>
                     <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">На сайте "Морской дракон"</p></li>
-                    <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">По телефону +375 (XX) XXX-XX-XX.</p></li>
+                    <li className='menu__nav__modal-li'><p className="menu__nav__modal-text ">По телефону +375 (29) 732-71-17.</p></li>
                     <li className='menu__nav__modal-li'>
                       <div className="menu__nav__modal-text menu__nav__modal-media">
                         В Instagram или нашем приложении:
@@ -134,7 +131,7 @@ function MenuNav() {
                 <h1>Контакты</h1>
                 <p className="menu__nav__modal-text">Мы всегда рады вашим звонкам и заказам! Если у вас есть вопросы, пожелания или вы хотите оформить заказ, свяжитесь с нами удобным для вас способом:</p>
                 <ul>
-                  <li className='menu__nav__modal-li '><p className="menu__nav__modal-text">Телефон: +375 (XX) XXX-XX-XX</p> </li>
+                  <li className='menu__nav__modal-li '><p className="menu__nav__modal-text">Телефон: +375 (29) 732-71-17</p> </li>
                   <li className='menu__nav__modal-li'><p className="menu__nav__modal-text">Адрес: г. Мозырь, ул. Примерная, 10</p> </li>
                 </ul>
                 <h1>Часы работы:</h1>
