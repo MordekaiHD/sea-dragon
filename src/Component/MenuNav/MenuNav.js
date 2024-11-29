@@ -66,14 +66,15 @@ function MenuNav() {
           <nav className={`menu__nav ${isMenuOpen ? 'menu__nav--open' : ''}`}>
             {sections.map((section) => (
               <a
-                key={section.id}
-                href={`#${section.id}`}
-                className={`menu__link ${activeSection === section.id ? 'active' : ''}`}
-                aria-current={activeSection === section.id ? 'page' : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                <p className="menu__text">{section.name}</p>
-              </a>
+              key={section.id}
+              href={`#${section.id}`}
+              className={`menu__link ${activeSection === section.id ? 'active' : ''}`}
+              aria-current={activeSection === section.id ? 'page' : undefined}
+              onClick={() => setMenuOpen(false)}
+            >
+              <p className="menu__text">{section.name}</p>
+            </a>
+            
             ))}
           </nav>
 
